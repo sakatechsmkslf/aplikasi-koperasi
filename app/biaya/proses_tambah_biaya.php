@@ -8,7 +8,7 @@ $jumlah = $_POST['jumlah'];
 $keterangan = $_POST['keterangan'];
 
 
-$input = mysqli_query($koneksi, "insert into category(tanggal,nama_biaya,jumlah,keterangan) values('$tanggal','$nama_biaya','$jumlah','$keterangan')");
+$input = mysqli_query($koneksi, "insert into tbl_biaya(tanggal,nama_biaya,jumlah,keterangan) values('$tanggal','$nama_biaya','$jumlah','$keterangan')");
 if ($input) {
     header("location:../../dasboard.php");
 } else {

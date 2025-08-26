@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $jumlah = $_POST['jumlah'];
     $keterangan = $_POST['keterangan'];
 
-    $query = "update tbl_barang SET tanggal = '$tanggal', nama_biaya = '$nama_biaya', jumlah = '$jumlah', keterangan = '$keterangan' WHERE id_biaya = '$id_biaya'";
+    $query = "update tbl_biaya SET tanggal = '$tanggal', nama_biaya = '$nama_biaya', jumlah = '$jumlah', keterangan = '$keterangan' WHERE id_biaya = '$id_biaya'";
     $result = mysqli_query($koneksi, $query);
 
     if ($result) {
