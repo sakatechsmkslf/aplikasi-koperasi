@@ -2,7 +2,7 @@
 include '../../koneksi.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $id_biaya = $_POST['id_pendapatan'];
+    $id_pendapatan = $_POST['id_pendapatan'];
     $tanggal = $_POST['tanggal'];
     $nama_pendapatan = $_POST['nama_pendapatan'];
     $jumlah = $_POST['jumlah'];
