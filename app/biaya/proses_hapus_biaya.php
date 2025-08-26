@@ -1,5 +1,5 @@
 <?php
-include '../koneksi.php';
+include '../../koneksi.php';
 session_start();
 
 if (isset($_GET['id_biaya'])) {
@@ -10,13 +10,13 @@ if (isset($_GET['id_biaya'])) {
         $_SESSION['status'] = 'Barang berhasil dihapus!';
         $_SESSION['status_type'] = 'success';
         //ubah ke view index biaya/tambah biaya
-        header('Location: tabel-barang.php');
+        header('Location: ../biaya.php');
         exit();
     } else {
         $_SESSION['status'] = 'Terjadi kesalahan saat menghapus barang!';
         $_SESSION['status_type'] = 'error';
         //ubah ke view index biaya/tambah biaya
-        header('Location: tabel-barang.php');
+        header('Location: ../biaya.php');
         exit();
     }
 } else {

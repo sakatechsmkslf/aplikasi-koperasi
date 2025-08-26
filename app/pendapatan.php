@@ -30,7 +30,7 @@ include("header.php");
                                             <tr>
                                                 <th>id</th>
                                                 <th>tanggal</th>
-                                                <th>Nama Biaya</th>
+                                                <th>Nama Pendapatan</th>
                                                 <th>jumlah</th>
                                                 <th>keterangan</th>
                                                 <th>Aksi</th>
@@ -38,28 +38,28 @@ include("header.php");
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $query = "select * from tbl_biaya";
+                                            $query = "select * from tbl_pendapatan";
                                             $result = mysqli_query($koneksi, $query);
                                             if (mysqli_num_rows($result) > 0):
                                                 while ($row = mysqli_fetch_assoc($result)): ?>
                                                     <tr>
-                                                        <td><?= $row['id_biaya']; ?></td>
+                                                        <td><?= $row['id_pendapatan']; ?></td>
                                                         <td><?= $row['tanggal']; ?></td>
-                                                        <td><?= $row['nama_biaya']; ?></td>
+                                                        <td><?= $row['nama_pendapatan']; ?></td>
                                                         <td><?= $row['jumlah']; ?></td>
                                                         <td><?= $row['keterangan']; ?></td>
                                                         <td>
                                                             <button class="btn btn-primary edit-btn"
-                                                                data-id_biaya="<?= $row['id_biaya']; ?>"
+                                                                data-id_pendapatan="<?= $row['id_pendapatan']; ?>"
                                                                 data-tanggal="<?= $row['tanggal']; ?>"
-                                                                data-nama_biaya="<?= $row['nama_biaya']; ?>"
+                                                                data-nama_pendapatan="<?= $row['nama_pendapatan']; ?>"
                                                                 data-jumlah="<?= $row['jumlah']; ?>"
                                                                 data-keterangan="<?= $row['keterangan']; ?>" data-toggle="modal"
                                                                 data-target="#editModal">
                                                                 Edit
                                                             </button> 
-                                                            <button class="btn btn-danger"><?php echo $row['id_biaya'];?> <a
-                                                                    href="biaya/proses_hapus_biaya.php?id_biaya=<?= $row['id_biaya']; ?>"
+                                                            <button class="btn btn-danger"><?php echo $row['id_pendapatan'];?> <a
+                                                                    href="pendapatan/proses_hapus_pendapatan.php?id_pendapatan=<?= $row['id_pendapatan']; ?>"
                                                                     class="text-white">Hapus</a></button>
                                                         </td>
                                                     </tr>
@@ -77,19 +77,19 @@ include("header.php");
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="editModalLabel">Edit Biayaa</h5>
+                                                    <h5 class="modal-title" id="editModalLabel">Edit pendapatan</h5>
                                                     <button type="button" class="close" data-dismiss="modal"
                                                         aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
-                                                <form action="biaya/proses_edit_biaya.php" method="POST">
+                                                <form action="pendapatan/proses_edit_pendapatan.php" method="POST">
                                                     <div class="modal-body">
-                                                        <input type="text" name="id_biaya" id="edit-id_biaya">
+                                                        <input type="text" name="id_pendapatan" id="edit-id_pendapatan">
 
                                                         <div class="form-group mb-3">
-                                                            <label for="edit-nama_biaya">Nama Biaya</label>
-                                                            <input type="text" name="nama_biaya" id="edit-nama_biaya"
+                                                            <label for="edit-nama_pendapatan">Nama pendapatan</label>
+                                                            <input type="text" name="nama_pendapatan" id="edit-nama_pendapatan"
                                                                 class="form-control" required>
                                                         </div>
 
@@ -151,15 +151,15 @@ include("header.php");
     <script>
         $(document).ready(function () {
             $(".edit-btn").click(function () {
-                var id_biaya = $(this).data("id_biaya");
+                var id_pendapatan = $(this).data("id_pendapatan");
                 var tanggal = $(this).data("tanggal");
-                var nama_biaya = $(this).data("nama_biaya");
+                var nama_pendapatan = $(this).data("nama_pendapatan");
                 var jumlah = $(this).data("jumlah");
                 var keterangan = $(this).data("keterangan");
 
-                $("#edit-id_biaya").val(id_biaya);
+                $("#edit-id_pendapatan").val(id_pendapatan);
                 $("#edit-tanggal").val(tanggal);
-                $("#edit-nama_biaya").val(nama_biaya);
+                $("#edit-nama_pendapatan").val(nama_pendapatan);
                 $("#edit-jumlah").val(jumlah);
                 $("#edit-keterangan").val(keterangan);
 

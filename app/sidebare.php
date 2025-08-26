@@ -73,6 +73,62 @@
             </ul>
           </li>
           <li class="nav-item">
+            <a href="tabel-barang.php" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Biaya
+                <i class="fas fa-angle-left right"></i>
+                <span class="badge badge-info right">6</span>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="tambah_biaya.php" class="nav-link">
+                <i class="nav-icon fas fa-edit"></i>
+                <p>Tambah Biaya</p>
+                </a>
+              </li>
+             
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="biaya.php" class="nav-link">
+                <i class="nav-icon fas fa-edit"></i>
+                <p>Table Biaya</p>
+                </a>
+              </li>
+             
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="tabel-barang.php" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Pendapatan
+                <i class="fas fa-angle-left right"></i>
+                <span class="badge badge-info right">6</span>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="tambah_pendapatan.php" class="nav-link">
+                <i class="nav-icon fas fa-edit"></i>
+                <p>Tambah Pendapatan</p>
+                </a>
+              </li>
+             
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="pendapatan.php" class="nav-link">
+                <i class="nav-icon fas fa-edit"></i>
+                <p>Table Pendapatan</p>
+                </a>
+              </li>
+             
+            </ul>
+          </li>
+          <li class="nav-item">
             <a href="logout.php" class="nav-link">
               <i class="nav-icon fas fa-power-off"></i>
               <p>
