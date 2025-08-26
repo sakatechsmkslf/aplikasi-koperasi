@@ -10,7 +10,7 @@ $keterangan = $_POST['keterangan'];
 
 $input = mysqli_query($koneksi, "insert into tbl_pendapatan(tanggal,nama_pendapatan,jumlah,keterangan) values('$tanggal','$nama_pendapatan','$jumlah','$keterangan')");
 if ($input) {
-    header("location:../../dasboard.php");
+    header("location:../pendapatan.php");
 } else {
     echo "Data gagal disimpan";
 }

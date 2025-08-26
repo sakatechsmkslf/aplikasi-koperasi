@@ -10,13 +10,13 @@ if (isset($_GET['id_pendapatan'])) {
         $_SESSION['status'] = 'Barang berhasil dihapus!';
         $_SESSION['status_type'] = 'success';
         //ubah ke view index pendapatan/tambah pendapatan
-        header('Location: tabel-barang.php');
+        header('Location: ../pendapatan.php');
         exit();
     } else {
         $_SESSION['status'] = 'Terjadi kesalahan saat menghapus barang!';
         $_SESSION['status_type'] = 'error';
         //ubah ke view index pendapatan/tambah pendapatan
-        header('Location: tabel-barang.php');
+        header('Location: ../pendapatan.php');
         exit();
     }
 } else {
