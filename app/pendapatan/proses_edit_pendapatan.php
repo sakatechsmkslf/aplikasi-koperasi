@@ -4,7 +4,7 @@ include '../../koneksi.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id_biaya = $_POST['id_pendapatan'];
     $tanggal = $_POST['tanggal'];
-    $nama_biaya = $_POST['nama_pendapatan'];
+    $nama_pendapatan = $_POST['nama_pendapatan'];
     $jumlah = $_POST['jumlah'];
     $keterangan = $_POST['keterangan'];
 
