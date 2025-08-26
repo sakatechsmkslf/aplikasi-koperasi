@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 25, 2025 at 04:42 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Aug 26, 2025 at 09:38 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -115,6 +115,34 @@ INSERT INTO `tbl_barang` (`id_tbl_barang`, `input_scanner`, `nama_barang`, `id_c
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_biaya`
+--
+
+CREATE TABLE `tbl_biaya` (
+  `id_biaya` int(11) NOT NULL,
+  `tanggal` date NOT NULL,
+  `nama_biaya` varchar(255) NOT NULL,
+  `jumlah` int(11) NOT NULL,
+  `keterangan` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_pendapatan`
+--
+
+CREATE TABLE `tbl_pendapatan` (
+  `id_pendapatan` int(11) NOT NULL,
+  `tanggal` date NOT NULL,
+  `nama_pendapatan` varchar(255) NOT NULL,
+  `jumlah` int(11) NOT NULL,
+  `keterangan` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_transaksi`
 --
 
@@ -186,6 +214,18 @@ ALTER TABLE `tbl_barang`
   ADD KEY `id_category` (`id_category`);
 
 --
+-- Indexes for table `tbl_biaya`
+--
+ALTER TABLE `tbl_biaya`
+  ADD PRIMARY KEY (`id_biaya`);
+
+--
+-- Indexes for table `tbl_pendapatan`
+--
+ALTER TABLE `tbl_pendapatan`
+  ADD PRIMARY KEY (`id_pendapatan`);
+
+--
 -- Indexes for table `tbl_transaksi`
 --
 ALTER TABLE `tbl_transaksi`
@@ -218,6 +258,18 @@ ALTER TABLE `detail_transaksi`
 --
 ALTER TABLE `tbl_barang`
   MODIFY `id_tbl_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+
+--
+-- AUTO_INCREMENT for table `tbl_biaya`
+--
+ALTER TABLE `tbl_biaya`
+  MODIFY `id_biaya` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_pendapatan`
+--
+ALTER TABLE `tbl_pendapatan`
+  MODIFY `id_pendapatan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_transaksi`
