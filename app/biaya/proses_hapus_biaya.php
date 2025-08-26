@@ -1,5 +1,5 @@
 <?php
-include '../koneksi.php';
+include '../../koneksi.php';
 session_start();
 
 if (isset($_GET['id_biaya'])) {
