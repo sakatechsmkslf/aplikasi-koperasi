@@ -23,7 +23,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a href="tabel-barang.php" class="nav-link">
+        <a href="view_index_barang.php" class="nav-link">
           <i class="nav-icon fas fa-copy"></i>
           <p>
             Barang
@@ -33,7 +33,7 @@
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="barang/view_tambah_barang.php" class="nav-link">
+            <a href="view_tambah_barang.php" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>Tambah Barang</p>
             </a>
@@ -45,7 +45,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="tabel-barang.php" class="nav-link">
+            <a href="view_index_barang.php" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
               <p>Tabel Barang</p>
             </a>
@@ -73,7 +73,7 @@
         </ul>
       </li>
       <li class="nav-item">
-        <a href="tabel-barang.php" class="nav-link">
+        <a href="view_index_barang.php" class="nav-link">
           <i class="nav-icon fas fa-copy"></i>
           <p>
             Biaya
@@ -101,7 +101,7 @@
         </ul>
       </li>
       <li class="nav-item">
-        <a href="tabel-barang.php" class="nav-link">
+        <a href="view_index_barang.php" class="nav-link">
           <i class="nav-icon fas fa-copy"></i>
           <p>
             Pendapatan
