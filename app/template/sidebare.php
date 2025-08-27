@@ -51,20 +51,20 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="riwayat.php" class="nav-link">
+            <a href="../riwayat.php" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>Transaksi</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="kategori.php" class="nav-link">
+            <a href="../kategori/kategori.php" class="nav-link">
               <i class="nav-icon fas fa-list"></i>
               <p>Kategori</p>
             </a>
           </li>
 
           <li class="nav-item">
-            <a href="rekap.php" class="nav-link">
+            <a href="../rekap.php" class="nav-link">
               <i class="nav-icon fas fa-history"></i>
               <p>Rekap</p>
             </a>

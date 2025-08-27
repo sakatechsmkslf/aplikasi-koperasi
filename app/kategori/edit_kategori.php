@@ -1,5 +1,5 @@
 <?php
-include '../koneksi.php';
+include '../../koneksi.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id = $_POST['id'];
@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result) {
         session_start();
         $_SESSION['status'] = "Data berhasil diupdate!";
-        header("Location: kategori.php"); 
+        header("Location: kategori.php");
     } else {
         session_start();
         $_SESSION['status'] = "Gagal update";
@@ -19,4 +19,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-
