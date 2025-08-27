@@ -26,7 +26,7 @@ include("header.php");
                                     <h3 class="card-title">tambah Biaya</h3>
                                 </div>
                                 <div class="card-body">
-                                    <form method="POST" action="biaya/proses_tambah_biaya.php">
+                                    <form method="POST" action="biaya/proses_tambah_biaya.php" id="formku">
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Tanggal</label>
                                             <input type="date" name="tanggal" class="form-control"
@@ -39,9 +39,11 @@ include("header.php");
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Jumlah</label>
-                                            <input type="number" name="jumlah" class="form-control"
-                                                placeholder="Masukkan Nama Kategori" autofocus>
+                                            <input type="text" name="jumlah" class="form-control"
+                                                placeholder="Masukkan Jumlah" id="jumlah">
                                         </div>
+
+
                                         <div class="form-group mb-3">
                                             <label for="keterangan">Keterangan</label>
                                             <textarea id="keterangan" name="keterangan" class="form-control" rows="4"
@@ -75,6 +77,21 @@ include("header.php");
         unset($_SESSION['status_type']);
         ?>
     <?php endif; ?>
+
+    <script>
+        const input = document.getElementById('jumlah');
+        const form = document.getElementById('formku');
+        
+        input.addEventListener('keyup', function (e) {
+            let angka = this.value.replace(/\D/g, ""); 
+            this.value = angka ? "Rp " + new Intl.NumberFormat("id-ID").format(angka) : "";
+        });
+
+        form.addEventListener('submit', function () {
+            let angka = input.value.replace(/\D/g, ""); 
+            input.value = angka; 
+        });
+    </script>
 
     <?php include("footer.php");
     ?>

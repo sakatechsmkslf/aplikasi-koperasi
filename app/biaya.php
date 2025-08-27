@@ -46,7 +46,7 @@ include("header.php");
                                                         <td><?= $row['id_biaya']; ?></td>
                                                         <td><?= $row['tanggal']; ?></td>
                                                         <td><?= $row['nama_biaya']; ?></td>
-                                                        <td><?= $row['jumlah']; ?></td>
+                                                        <td>Rp <?= number_format($row['jumlah'], 0, ',', '.'); ?></td>
                                                         <td><?= $row['keterangan']; ?></td>
                                                         <td>
                                                             <button class="btn btn-primary edit-btn"
@@ -57,8 +57,8 @@ include("header.php");
                                                                 data-keterangan="<?= $row['keterangan']; ?>" data-toggle="modal"
                                                                 data-target="#editModal">
                                                                 Edit
-                                                            </button> 
-                                                            <button class="btn btn-danger"><?php echo $row['id_biaya'];?> <a
+                                                            </button>
+                                                            <button class="btn btn-danger"><a
                                                                     href="biaya/proses_hapus_biaya.php?id_biaya=<?= $row['id_biaya']; ?>"
                                                                     class="text-white">Hapus</a></button>
                                                         </td>
@@ -83,9 +83,10 @@ include("header.php");
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
-                                                <form action="biaya/proses_edit_biaya.php" method="POST">
+                                                <form action="biaya/proses_edit_biaya.php" method="POST"
+                                                    id="formEditBiaya">
                                                     <div class="modal-body">
-                                                        <input type="text" name="id_biaya" id="edit-id_biaya">
+                                                        <input type="hidden" name="id_biaya" id="edit-id_biaya">
 
                                                         <div class="form-group mb-3">
                                                             <label for="edit-nama_biaya">Nama Biaya</label>
@@ -101,18 +102,17 @@ include("header.php");
 
                                                         <div class="form-group mb-3">
                                                             <label for="edit-jumlah">Jumlah</label>
-                                                            <input type="number" name="jumlah" id="edit-jumlah"
-                                                                class="form-control" min="1" required>
+                                                            <input type="text" name="jumlah" id="edit-jumlah"
+                                                                class="form-control" required>
                                                         </div>
 
                                                         <div class="form-group mb-3">
                                                             <label for="edit-keterangan">Keterangan</label>
                                                             <textarea name="keterangan" id="edit-keterangan"
-                                                                class="form-control" rows="4"
-                                                                required></textarea>
+                                                                class="form-control" rows="4" required></textarea>
                                                         </div>
-
                                                     </div>
+
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary"
                                                             data-dismiss="modal">Tutup</button>
@@ -120,6 +120,7 @@ include("header.php");
                                                             Perubahan</button>
                                                     </div>
                                                 </form>
+
                                             </div>
                                         </div>
                                     </div>
@@ -146,9 +147,27 @@ include("header.php");
         ?>
     <?php endif; ?>
 
+    <script>
+        $('#edit-jumlah').on('keyup', function () {
+            let angka = this.value.replace(/\D/g, ""); 
+            this.value = angka ? "Rp " + new Intl.NumberFormat("id-ID").format(angka) : "";
+        });
+
+        $('#formEditBiaya').on('submit', function () {
+            let angka = $('#edit-jumlah').val().replace(/\D/g, "");
+            $('#edit-jumlah').val(angka);
+        });
+
+    </script>
+
     <?php include("footer.php");
     ?>
     <script>
+        function formatRupiah(angka) {
+            let clean = angka.toString().replace(/\D/g, "");
+            return clean ? "Rp " + new Intl.NumberFormat("id-ID").format(clean) : "";
+        }
+
         $(document).ready(function () {
             $(".edit-btn").click(function () {
                 var id_biaya = $(this).data("id_biaya");
@@ -160,7 +179,7 @@ include("header.php");
                 $("#edit-id_biaya").val(id_biaya);
                 $("#edit-tanggal").val(tanggal);
                 $("#edit-nama_biaya").val(nama_biaya);
-                $("#edit-jumlah").val(jumlah);
+                $("#edit-jumlah").val(formatRupiah(jumlah));
                 $("#edit-keterangan").val(keterangan);
 
             });

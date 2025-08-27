@@ -46,7 +46,7 @@ include("header.php");
                                                         <td><?= $row['id_pendapatan']; ?></td>
                                                         <td><?= $row['tanggal']; ?></td>
                                                         <td><?= $row['nama_pendapatan']; ?></td>
-                                                        <td><?= $row['jumlah']; ?></td>
+                                                        <td>Rp <?= number_format($row['jumlah'], 0, ',', '.'); ?></td>
                                                         <td><?= $row['keterangan']; ?></td>
                                                         <td>
                                                             <button class="btn btn-primary edit-btn"
@@ -57,8 +57,8 @@ include("header.php");
                                                                 data-keterangan="<?= $row['keterangan']; ?>" data-toggle="modal"
                                                                 data-target="#editModal">
                                                                 Edit
-                                                            </button> 
-                                                            <button class="btn btn-danger"><?php echo $row['id_pendapatan'];?> <a
+                                                            </button>
+                                                            <button class="btn btn-danger"> <a
                                                                     href="pendapatan/proses_hapus_pendapatan.php?id_pendapatan=<?= $row['id_pendapatan']; ?>"
                                                                     class="text-white">Hapus</a></button>
                                                         </td>
@@ -83,14 +83,14 @@ include("header.php");
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
-                                                <form action="pendapatan/proses_edit_pendapatan.php" method="POST">
+                                                <form action="pendapatan/proses_edit_pendapatan.php" method="POST" id="formEditBiaya">
                                                     <div class="modal-body">
-                                                        <input type="text" name="id_pendapatan" id="edit-id_pendapatan">
+                                                        <input type="hidden" name="id_pendapatan" id="edit-id_pendapatan">
 
                                                         <div class="form-group mb-3">
                                                             <label for="edit-nama_pendapatan">Nama pendapatan</label>
-                                                            <input type="text" name="nama_pendapatan" id="edit-nama_pendapatan"
-                                                                class="form-control" required>
+                                                            <input type="text" name="nama_pendapatan"
+                                                                id="edit-nama_pendapatan" class="form-control" required>
                                                         </div>
 
                                                         <div class="form-group mb-3">
@@ -101,15 +101,14 @@ include("header.php");
 
                                                         <div class="form-group mb-3">
                                                             <label for="edit-jumlah">Jumlah</label>
-                                                            <input type="number" name="jumlah" id="edit-jumlah"
+                                                            <input type="text" name="jumlah" id="edit-jumlah"
                                                                 class="form-control" min="1" required>
                                                         </div>
 
                                                         <div class="form-group mb-3">
                                                             <label for="edit-keterangan">Keterangan</label>
                                                             <textarea name="keterangan" id="edit-keterangan"
-                                                                class="form-control" rows="4"
-                                                                required></textarea>
+                                                                class="form-control" rows="4" required></textarea>
                                                         </div>
 
                                                     </div>
@@ -146,9 +145,25 @@ include("header.php");
         ?>
     <?php endif; ?>
 
-    <?php include("footer.php");
-    ?>
+    <?php include("footer.php"); ?>
+
     <script>
+        $('#edit-jumlah').on('keyup', function () {
+            let angka = this.value.replace(/\D/g, ""); 
+            this.value = angka ? "Rp " + new Intl.NumberFormat("id-ID").format(angka) : "";
+        });
+
+        $('#formEditBiaya').on('submit', function () {
+            let angka = $('#edit-jumlah').val().replace(/\D/g, "");
+            $('#edit-jumlah').val(angka);
+        });
+
+
+        function formatRupiah(angka) {
+            let clean = angka.toString().replace(/\D/g, "");
+            return clean ? "Rp " + new Intl.NumberFormat("id-ID").format(clean) : "";
+        }
+
         $(document).ready(function () {
             $(".edit-btn").click(function () {
                 var id_pendapatan = $(this).data("id_pendapatan");
@@ -160,12 +175,14 @@ include("header.php");
                 $("#edit-id_pendapatan").val(id_pendapatan);
                 $("#edit-tanggal").val(tanggal);
                 $("#edit-nama_pendapatan").val(nama_pendapatan);
-                $("#edit-jumlah").val(jumlah);
+                $("#edit-jumlah").val(formatRupiah(jumlah));
                 $("#edit-keterangan").val(keterangan);
 
             });
         });
     </script>
+
+
 </body>
 
 </html>
