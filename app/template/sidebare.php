@@ -39,7 +39,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="cari_data.php" class="nav-link">
+            <a href="cari_barang.php" class="nav-link">
               <i class="fas fa-search fa-fw"></i>
               <p>Cari Barang</p>
             </a>

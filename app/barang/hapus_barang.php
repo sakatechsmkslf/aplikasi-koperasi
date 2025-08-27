@@ -9,12 +9,12 @@ if (isset($_GET['id'])) {
     if (mysqli_query($koneksi, $hapusBarang)) {
         $_SESSION['status'] = 'Barang berhasil dihapus!';
         $_SESSION['status_type'] = 'success';
-        header('Location: tabel-barang.php');
+        header('Location: view_index_barang.php');
         exit();
     } else {
         $_SESSION['status'] = 'Terjadi kesalahan saat menghapus barang!';
         $_SESSION['status_type'] = 'error';
-        header('Location: tabel-barang.php');
+        header('Location: view_index_barang.php');
         exit();
     }
 } else {

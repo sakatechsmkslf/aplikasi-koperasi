@@ -74,7 +74,7 @@
       </li>
       <li class="nav-item">
         <a href="tabel-barang.php" class="nav-link">
-          <i class="nav-icon fas fa-copy"></i>
+          <i class="nav-icon fa-solid fa-money-bill"></i>
           <p>
             Biaya
             <i class="fas fa-angle-left right"></i>
