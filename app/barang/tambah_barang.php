@@ -1,6 +1,6 @@
 <?php
 
-include "../koneksi.php";
+include "../../koneksi.php";
 
 $input_scanner = addslashes(trim($_POST['input_scanner']));
 $nama_barang = addslashes(trim($_POST['nama_barang']));
@@ -11,10 +11,10 @@ $quantity = addslashes(trim($_POST['quantity']));
 $tanggal_input = date('Y-m-d H:i:s');
 
 
-$input = mysqli_query($koneksi,"insert into tbl_barang(input_scanner,nama_barang,id_category,harga,harga_jual,quantity,tanggal_input) values('$input_scanner','$nama_barang','$id_category','$harga','$harga_jual','$quantity','$tanggal_input')");
-if($input){
+$input = mysqli_query($koneksi, "insert into tbl_barang(input_scanner,nama_barang,id_category,harga,harga_jual,quantity,tanggal_input) values('$input_scanner','$nama_barang','$id_category','$harga','$harga_jual','$quantity','$tanggal_input')");
+if ($input) {
    echo "Data berhasil disimpan";
-}else{
+} else {
    echo "Data gagal disimpan";
 }
 ?>
