@@ -51,7 +51,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="../riwayat.php" class="nav-link">
+            <a href="../transaksi/riwayat.php" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>Transaksi</p>
             </a>
@@ -64,7 +64,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="../rekap.php" class="nav-link">
+            <a href="../transaksi/rekap.php" class="nav-link">
               <i class="nav-icon fas fa-history"></i>
               <p>Rekap</p>
             </a>
