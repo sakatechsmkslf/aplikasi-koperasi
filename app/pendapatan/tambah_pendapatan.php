@@ -1,18 +1,18 @@
 <?php
-include '../koneksi.php';
+include '../../koneksi.php';
 session_start();
-include("header.php");
+include("../template/header.php");
 ?>
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
-        <?php include("navbar.php"); ?>
+        <?php include("../template/navbar.php"); ?>
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <a href="index3.html" class="brand-link">
-                <img src="dist/img/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3">
+                <img src="../dist/img/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3">
                 <span class="brand-text font-weight-light">Kasir BC</span>
             </a>
-            <?php include "sidebare.php"; ?>
+            <?php include "../template/sidebare.php"; ?>
         </aside>
         <div class="content-wrapper">
             <section class="content">
@@ -26,7 +26,7 @@ include("header.php");
                                     <h3 class="card-title">tambah Pendapatan</h3>
                                 </div>
                                 <div class="card-body">
-                                    <form method="POST" action="pendapatan/proses_tambah_pendapatan.php" id="formku">
+                                    <form method="POST" action="proses_tambah_pendapatan.php" id="formku">
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Tanggal</label>
                                             <input type="date" name="tanggal" class="form-control"
@@ -81,17 +81,17 @@ include("header.php");
         const form = document.getElementById('formku');
 
         input.addEventListener('keyup', function (e) {
-            let angka = this.value.replace(/\D/g, ""); 
+            let angka = this.value.replace(/\D/g, "");
             this.value = angka ? "Rp " + new Intl.NumberFormat("id-ID").format(angka) : "";
         });
 
         form.addEventListener('submit', function () {
-            let angka = input.value.replace(/\D/g, ""); 
+            let angka = input.value.replace(/\D/g, "");
             input.value = angka;
         });
     </script>
 
-    <?php include("footer.php");
+    <?php include("../template/footer.php");
     ?>
 </body>
 

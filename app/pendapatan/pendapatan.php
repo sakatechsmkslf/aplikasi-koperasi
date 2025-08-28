@@ -1,18 +1,18 @@
 <?php
-include '../koneksi.php';
+include '../../koneksi.php';
 session_start();
-include("header.php");
+include("../template/header.php");
 ?>
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
-        <?php include("navbar.php"); ?>
+        <?php include("../template/navbar.php"); ?>
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <a href="index3.html" class="brand-link">
                 <img src="dist/img/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3">
                 <span class="brand-text font-weight-light">Kasir BC</span>
             </a>
-            <?php include "sidebare.php"; ?>
+            <?php include "../template/sidebare.php"; ?>
         </aside>
         <div class="content-wrapper">
             <section class="content">
@@ -59,7 +59,7 @@ include("header.php");
                                                                 Edit
                                                             </button>
                                                             <button class="btn btn-danger"> <a
-                                                                    href="pendapatan/proses_hapus_pendapatan.php?id_pendapatan=<?= $row['id_pendapatan']; ?>"
+                                                                    href="proses_hapus_pendapatan.php?id_pendapatan=<?= $row['id_pendapatan']; ?>"
                                                                     class="text-white">Hapus</a></button>
                                                         </td>
                                                     </tr>
@@ -83,9 +83,11 @@ include("header.php");
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
-                                                <form action="pendapatan/proses_edit_pendapatan.php" method="POST" id="formEditBiaya">
+                                                <form action="proses_edit_pendapatan.php" method="POST"
+                                                    id="formEditBiaya">
                                                     <div class="modal-body">
-                                                        <input type="hidden" name="id_pendapatan" id="edit-id_pendapatan">
+                                                        <input type="hidden" name="id_pendapatan"
+                                                            id="edit-id_pendapatan">
 
                                                         <div class="form-group mb-3">
                                                             <label for="edit-nama_pendapatan">Nama pendapatan</label>
@@ -145,11 +147,11 @@ include("header.php");
         ?>
     <?php endif; ?>
 
-    <?php include("footer.php"); ?>
+    <?php include("../template/footer.php"); ?>
 
     <script>
         $('#edit-jumlah').on('keyup', function () {
-            let angka = this.value.replace(/\D/g, ""); 
+            let angka = this.value.replace(/\D/g, "");
             this.value = angka ? "Rp " + new Intl.NumberFormat("id-ID").format(angka) : "";
         });
 
