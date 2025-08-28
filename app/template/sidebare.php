@@ -14,7 +14,7 @@
   <nav class="mt-2">
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
       <li class="nav-item">
-        <a href="index.php" class="nav-link">
+        <a href="../index.php" class="nav-link">
           <i class="nav-icon fas fa-th"></i>
           <p>
             Dasboard
@@ -23,7 +23,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a href="view_index_barang.php" class="nav-link">
+        <a href="../barang/view_index_barang.php" class="nav-link">
           <i class="nav-icon fas fa-copy"></i>
           <p>
             Barang
@@ -33,19 +33,19 @@
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="view_tambah_barang.php" class="nav-link">
+            <a href="../barang/view_tambah_barang.php" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>Tambah Barang</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="cari_barang.php" class="nav-link">
+            <a href="../barang/cari_barang.php" class="nav-link">
               <i class="fas fa-search fa-fw"></i>
               <p>Cari Barang</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="view_index_barang.php" class="nav-link">
+            <a href="../barang/view_index_barang.php" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
               <p>Tabel Barang</p>
             </a>
