@@ -83,7 +83,7 @@
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="tambah_biaya.php" class="nav-link">
+            <a href="../tambah_biaya.php" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>Tambah Biaya</p>
             </a>
@@ -92,7 +92,7 @@
         </ul>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="biaya.php" class="nav-link">
+            <a href="../biaya/biaya.php" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>Table Biaya</p>
             </a>

@@ -1,18 +1,18 @@
 <?php
-include '../koneksi.php';
+include '../../koneksi.php';
 session_start();
-include("header.php");
+include("../template/header.php");
 ?>
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
-        <?php include("navbar.php"); ?>
+        <?php include("../template/navbar.php"); ?>
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <a href="index3.html" class="brand-link">
-                <img src="dist/img/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3">
+                <img src="../dist/img/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3">
                 <span class="brand-text font-weight-light">Kasir BC</span>
             </a>
-            <?php include "sidebare.php"; ?>
+            <?php include "../template/sidebare.php"; ?>
         </aside>
         <div class="content-wrapper">
             <section class="content">
@@ -93,7 +93,7 @@ include("header.php");
         });
     </script>
 
-    <?php include("footer.php");
+    <?php include("../template/footer.php");
     ?>
 </body>
 

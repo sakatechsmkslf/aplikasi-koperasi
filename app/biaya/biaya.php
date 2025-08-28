@@ -1,18 +1,18 @@
 <?php
-include '../koneksi.php';
+include '../../koneksi.php';
 session_start();
-include("header.php");
+include("../template/header.php");
 ?>
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
-        <?php include("navbar.php"); ?>
+        <?php include("../template/navbar.php"); ?>
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            <a href="index3.html" class="brand-link">
-                <img src="dist/img/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3">
+            <a href="../index3.html" class="brand-link">
+                <img src="../dist/img/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3">
                 <span class="brand-text font-weight-light">Kasir BC</span>
             </a>
-            <?php include "sidebare.php"; ?>
+            <?php include "../template/sidebare.php"; ?>
         </aside>
         <div class="content-wrapper">
             <section class="content">
@@ -59,7 +59,7 @@ include("header.php");
                                                                 Edit
                                                             </button>
                                                             <button class="btn btn-danger"><a
-                                                                    href="biaya/proses_hapus_biaya.php?id_biaya=<?= $row['id_biaya']; ?>"
+                                                                    href="proses_hapus_biaya.php?id_biaya=<?= $row['id_biaya']; ?>"
                                                                     class="text-white">Hapus</a></button>
                                                         </td>
                                                     </tr>
@@ -83,7 +83,7 @@ include("header.php");
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
-                                                <form action="biaya/proses_edit_biaya.php" method="POST"
+                                                <form action="proses_edit_biaya.php" method="POST"
                                                     id="formEditBiaya">
                                                     <div class="modal-body">
                                                         <input type="hidden" name="id_biaya" id="edit-id_biaya">
@@ -160,7 +160,7 @@ include("header.php");
 
     </script>
 
-    <?php include("footer.php");
+    <?php include("../footer.php");
     ?>
     <script>
         function formatRupiah(angka) {
