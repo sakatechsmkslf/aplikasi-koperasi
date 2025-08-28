@@ -14,7 +14,7 @@
   <nav class="mt-2">
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
       <li class="nav-item">
-        <a href="index.php" class="nav-link">
+        <a href="../template/index.php" class="nav-link">
           <i class="nav-icon fas fa-th"></i>
           <p>
             Dasboard
@@ -23,7 +23,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a href="view_index_barang.php" class="nav-link">
+        <a href="../barang/view_index_barang.php" class="nav-link">
           <i class="nav-icon fas fa-copy"></i>
           <p>
             Barang
@@ -33,25 +33,25 @@
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="view_tambah_barang.php" class="nav-link">
+            <a href="../barang/view_tambah_barang.php" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>Tambah Barang</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="cari_barang.php" class="nav-link">
+            <a href="../barang/cari_barang.php" class="nav-link">
               <i class="fas fa-search fa-fw"></i>
               <p>Cari Barang</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="view_index_barang.php" class="nav-link">
+            <a href="../barang/view_index_barang.php" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
               <p>Tabel Barang</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="../riwayat.php" class="nav-link">
+            <a href="../transaksi/riwayat.php" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>Transaksi</p>
             </a>
@@ -64,7 +64,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="../rekap.php" class="nav-link">
+            <a href="../transaksi/rekap.php" class="nav-link">
               <i class="nav-icon fas fa-history"></i>
               <p>Rekap</p>
             </a>
@@ -73,7 +73,7 @@
         </ul>
       </li>
       <li class="nav-item">
-        <a href="view_index_barang.php" class="nav-link">
+        <a href="../barang/view_index_barang.php" class="nav-link">
           <i class="nav-icon fas fa-copy"></i>
           <p>
             Biaya
@@ -83,7 +83,7 @@
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="tambah_biaya.php" class="nav-link">
+            <a href="../biaya/tambah_biaya.php" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>Tambah Biaya</p>
             </a>
@@ -92,7 +92,7 @@
         </ul>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="biaya.php" class="nav-link">
+            <a href="../biaya/biaya.php" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>Table Biaya</p>
             </a>
@@ -111,7 +111,7 @@
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="tambah_pendapatan.php" class="nav-link">
+            <a href="../pendapatan/tambah_pendapatan.php" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>Tambah Pendapatan</p>
             </a>
@@ -120,7 +120,7 @@
         </ul>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="pendapatan.php" class="nav-link">
+            <a href="../pendapatan/pendapatan.php" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>Table Pendapatan</p>
             </a>
@@ -129,7 +129,7 @@
         </ul>
       </li>
       <li class="nav-item">
-        <a href="logout.php" class="nav-link">
+        <a href="../logout.php" class="nav-link">
           <i class="nav-icon fas fa-power-off"></i>
           <p>
             Logout

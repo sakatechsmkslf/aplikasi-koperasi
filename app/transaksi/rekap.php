@@ -1,18 +1,18 @@
 <?php
-include '../koneksi.php';
+include '../../koneksi.php';
 session_start();
-include("header.php");
+include("../template/header.php");
 ?>
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
-        <?php include("navbar.php"); ?>
+        <?php include("../template/navbar.php"); ?>
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <a href="index3.html" class="brand-link">
-                <img src="dist/img/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3">
+                <img src="../dist/img/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3">
                 <span class="brand-text font-weight-light">Kasir BC</span>
             </a>
-            <?php include "sidebare.php"; ?>
+            <?php include "../template/sidebare.php"; ?>
 
         </aside>
         <div class="content-wrapper">
@@ -29,11 +29,13 @@ include("header.php");
                                 </div>
                                 <div class="card-body">
                                     <form method="GET" action="">
-                                        <label for="tanggal" >Tanggal:</label>
-                                        <input type="date" name="tanggal" id="tanggal" value="<?= isset($_GET['tanggal']) ? $_GET['tanggal'] : '' ?>">
+                                        <label for="tanggal">Tanggal:</label>
+                                        <input type="date" name="tanggal" id="tanggal"
+                                            value="<?= isset($_GET['tanggal']) ? $_GET['tanggal'] : '' ?>">
 
                                         <label for="bulan">Bulan:</label>
-                                        <input type="month" name="bulan" id="bulan" value="<?= isset($_GET['bulan']) ? $_GET['bulan'] : '' ?>">
+                                        <input type="month" name="bulan" id="bulan"
+                                            value="<?= isset($_GET['bulan']) ? $_GET['bulan'] : '' ?>">
 
                                         <label for="kategori">Kategori:</label>
                                         <select name="kategori" id="kategori">
@@ -116,8 +118,10 @@ include("header.php");
                                                         <td>Rp <?= number_format($row['harga_jual'], 0, ',', '.'); ?></td>
                                                         <td><?= $row['stok_tersisa']; ?></td>
                                                         <td><?= $row['barang_terjual']; ?></td>
-                                                        <td>Rp <?= number_format($row['jumlah_pendapatan'], 0, ',', '.'); ?></td>
-                                                        <td>Rp <?= number_format($row['jumlah_keuntungan'], 0, ',', '.'); ?></td>
+                                                        <td>Rp <?= number_format($row['jumlah_pendapatan'], 0, ',', '.'); ?>
+                                                        </td>
+                                                        <td>Rp <?= number_format($row['jumlah_keuntungan'], 0, ',', '.'); ?>
+                                                        </td>
 
                                                     </tr>
                                                 <?php endwhile;
@@ -148,7 +152,7 @@ include("header.php");
         ?>
     <?php endif; ?>
 
-    <?php include("footer.php");
+    <?php include("../template/footer.php");
     ?>
 </body>
 

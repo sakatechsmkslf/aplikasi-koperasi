@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include '../koneksi.php';
+include '../../koneksi.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $jumlahUang = intval(str_replace(['Rp.', '.', ','], '', $_POST['jumlah_uang']));
