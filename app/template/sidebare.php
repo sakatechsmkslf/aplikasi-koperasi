@@ -23,7 +23,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a href="tabel-barang.php" class="nav-link">
+        <a href="view_index_barang.php" class="nav-link">
           <i class="nav-icon fas fa-copy"></i>
           <p>
             Barang
@@ -33,38 +33,38 @@
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="barang/view_tambah_barang.php" class="nav-link">
+            <a href="view_tambah_barang.php" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>Tambah Barang</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="cari_data.php" class="nav-link">
+            <a href="cari_barang.php" class="nav-link">
               <i class="fas fa-search fa-fw"></i>
               <p>Cari Barang</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="tabel-barang.php" class="nav-link">
+            <a href="view_index_barang.php" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
               <p>Tabel Barang</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="riwayat.php" class="nav-link">
+            <a href="../riwayat.php" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>Transaksi</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="kategori.php" class="nav-link">
+            <a href="../kategori/kategori.php" class="nav-link">
               <i class="nav-icon fas fa-list"></i>
               <p>Kategori</p>
             </a>
           </li>
 
           <li class="nav-item">
-            <a href="rekap.php" class="nav-link">
+            <a href="../rekap.php" class="nav-link">
               <i class="nav-icon fas fa-history"></i>
               <p>Rekap</p>
             </a>
@@ -73,8 +73,8 @@
         </ul>
       </li>
       <li class="nav-item">
-        <a href="tabel-barang.php" class="nav-link">
-          <i class="nav-icon fa-solid fa-money-bill"></i>
+        <a href="view_index_barang.php" class="nav-link">
+          <i class="nav-icon fas fa-copy"></i>
           <p>
             Biaya
             <i class="fas fa-angle-left right"></i>
@@ -101,7 +101,7 @@
         </ul>
       </li>
       <li class="nav-item">
-        <a href="tabel-barang.php" class="nav-link">
+        <a href="view_index_barang.php" class="nav-link">
           <i class="nav-icon fas fa-copy"></i>
           <p>
             Pendapatan

@@ -1,18 +1,18 @@
 <?php
-include '../koneksi.php';
+include '../../koneksi.php';
 session_start();
-include("header.php");
+include("../template/header.php");
 ?>
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
-        <?php include("navbar.php"); ?>
+        <?php include("../template/navbar.php"); ?>
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            <a href="index3.html" class="brand-link">
-                <img src="dist/img/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3">
+            <a href="../index.html" class="brand-link">
+                <img src="../dist/img/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3">
                 <span class="brand-text font-weight-light">Kasir BC</span>
             </a>
-            <?php include "sidebare.php"; ?>
+            <?php include "../template/sidebare.php"; ?>
         </aside>
         <div class="content-wrapper">
             <section class="content">
@@ -29,7 +29,8 @@ include("header.php");
                                     <form method="POST" action="tambah_kategory.php">
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Nama Kategori</label>
-                                            <input type="text" name="nama" class="form-control" id="input_scanner" placeholder="Masukkan Nama Kategori" autofocus>
+                                            <input type="text" name="nama" class="form-control" id="input_scanner"
+                                                placeholder="Masukkan Nama Kategori" autofocus>
                                         </div>
                                 </div>
                                 <div class="card-footer">
@@ -58,10 +59,12 @@ include("header.php");
                                                         <td>
                                                             <button class="btn btn-primary edit-btn"
                                                                 data-id="<?= $row['id_category']; ?>"
-                                                                data-nama="<?= $row['nama']; ?>"
-                                                                data-toggle="modal" data-target="#editModal">
+                                                                data-nama="<?= $row['nama']; ?>" data-toggle="modal"
+                                                                data-target="#editModal">
                                                                 Edit
-                                                            </button> <button class="btn btn-danger"><a href="hapus-category.php?id=<?= $row['id_category']; ?>" class="text-white">Hapus</a></button>
+                                                            </button> <button class="btn btn-danger"><a
+                                                                    href="hapus-category.php?id=<?= $row['id_category']; ?>"
+                                                                    class="text-white">Hapus</a></button>
                                                         </td>
                                                     </tr>
                                                 <?php endwhile;
@@ -73,12 +76,14 @@ include("header.php");
 
                                             </tfoot>
                                     </table>
-                                    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="editModal" tabindex="-1"
+                                        aria-labelledby="editModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="editModalLabel">Edit Barang</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
@@ -87,12 +92,15 @@ include("header.php");
                                                         <input type="hidden" name="id" id="edit-id">
                                                         <div class="form-group">
                                                             <label>Nama Kategori</label>
-                                                            <input type="text" name="nama" id="edit-nama" class="form-control" required>
+                                                            <input type="text" name="nama" id="edit-nama"
+                                                                class="form-control" required>
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                                        <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-dismiss="modal">Tutup</button>
+                                                        <button type="submit" class="btn btn-primary">Simpan
+                                                            Perubahan</button>
                                                     </div>
                                                 </form>
                                             </div>
@@ -121,11 +129,11 @@ include("header.php");
         ?>
     <?php endif; ?>
 
-    <?php include("footer.php");
+    <?php include("../template/footer.php");
     ?>
     <script>
-        $(document).ready(function() {
-            $(".edit-btn").click(function() {
+        $(document).ready(function () {
+            $(".edit-btn").click(function () {
                 var id = $(this).data("id");
                 var nama = $(this).data("nama");
 

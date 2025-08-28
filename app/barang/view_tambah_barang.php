@@ -1,17 +1,17 @@
 <?php
-include("header.php");
+include("../template/header.php");
 ?>
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
-        <?php include("navbar.php"); ?>
+        <?php include "../template/navbar.php"; ?>
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
-                <img src="dist/img/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3">
+            <a href="../index3.html" class="brand-link">
+                <img src="../dist/img/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3">
                 <span class="brand-text font-weight-light">Kasir BC</span>
             </a>
-            <?php include "sidebare.php"; ?>
+            <?php include "../template/sidebare.php"; ?>
 
             <!-- /.sidebar -->
         </aside>
@@ -45,30 +45,35 @@ include("header.php");
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Kode Barcode</label>
-                                        <input type="text" class="form-control" id="input_scanner" placeholder="Masukkan Kode Barang" autofocus>
+                                        <input type="text" class="form-control" id="input_scanner"
+                                            placeholder="Masukkan Kode Barang" autofocus>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Nama Barang</label>
-                                        <input type="text" class="form-control" id="nama_barang" placeholder="Masukkan Nama Barang">
+                                        <input type="text" class="form-control" id="nama_barang"
+                                            placeholder="Masukkan Nama Barang">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Harga Asli</label>
-                                        <input type="text" class="form-control" id="harga" placeholder="Masukkan Harga Barang">
+                                        <input type="text" class="form-control" id="harga"
+                                            placeholder="Masukkan Harga Barang">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Harga Jual</label>
-                                        <input type="text" class="form-control" id="harga_jual" placeholder="Masukkan Harga Jual Barang">
+                                        <input type="text" class="form-control" id="harga_jual"
+                                            placeholder="Masukkan Harga Jual Barang">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Jumlah Barang</label>
-                                        <input type="number" class="form-control" id="quantity" placeholder="Masukkan Jumlah Barang">
+                                        <input type="number" class="form-control" id="quantity"
+                                            placeholder="Masukkan Jumlah Barang">
                                     </div>
                                     <div class="form-group">
                                         <label for="id_category">Kategori</label>
                                         <select class="form-control select2" id="id_category">
                                             <option value="">Pilih Kategori</option>
                                             <?php
-                                            include "../koneksi.php";
+                                            include "../../koneksi.php";
                                             $query = mysqli_query($koneksi, "select id_category, nama from category");
                                             while ($row = mysqli_fetch_assoc($query)) {
                                                 echo "<option value='" . $row['id_category'] . "'>" . $row['nama'] . "</option>";
@@ -96,10 +101,10 @@ include("header.php");
             <!-- /.content -->
         </div>
         <script>
-            $(document).ready(function() {
+            $(document).ready(function () {
                 $('#input_scanner').val("").focus();
 
-                $('#input_scanner').on('keypress', function(e) {
+                $('#input_scanner').on('keypress', function (e) {
                     if (e.which === 13) {
                         let kode = $(this).val().trim();
                         if (kode === "") {
@@ -112,7 +117,7 @@ include("header.php");
                     }
                 });
 
-                $('#btn_simpan').click(function() {
+                $('#btn_simpan').click(function () {
                     let input_scanner = $('#input_scanner').val().trim();
                     let nama_barang = $('#nama_barang').val().trim();
                     let harga = $('#harga').val().replace("Rp. ", "").replace(".", '').trim();;
@@ -128,7 +133,7 @@ include("header.php");
 
                     $.ajax({
                         type: 'POST',
-                        url: 'input_data.php',
+                        url: 'tambah_barang.php',
                         data: {
                             input_scanner: input_scanner,
                             nama_barang: nama_barang,
@@ -137,22 +142,22 @@ include("header.php");
                             quantity: quantity,
                             id_category: id_category
                         },
-                        beforeSend: function() {
+                        beforeSend: function () {
                             $('#message_info').text("Sedang memproses data, silahkan tunggu...");
                         },
-                        success: function(response) {
+                        success: function (response) {
                             $('#message_info').text("");
                             alert(response);
                             $('#input_scanner, #nama_barang, #harga,#harga_jual, #quantity, #id_category').val("");
                             $('#input_scanner').focus();
                         },
-                        error: function() {
+                        error: function () {
                             $('#message_info').text("Terjadi kesalahan saat menyimpan data.");
                         }
                     });
                 });
 
-                $('#btn_batal').click(function() {
+                $('#btn_batal').click(function () {
                     $('#input_scanner, #nama_barang, #harga, #harga_jual, #quantity, #id_category').val("");
                     $('#message_info').text("");
                     $('#input_scanner').focus();
@@ -160,7 +165,7 @@ include("header.php");
             });
 
             var dengan_rupiah = document.getElementById('harga', 'harga_jual');
-            dengan_rupiah.addEventListener('keyup', function(e) {
+            dengan_rupiah.addEventListener('keyup', function (e) {
                 dengan_rupiah.value = formatRupiah(this.value, 'Rp. ');
             });
 
@@ -179,7 +184,7 @@ include("header.php");
             }
 
             var rupiah_jual = document.getElementById('harga_jual');
-            rupiah_jual.addEventListener('keyup', function(e) {
+            rupiah_jual.addEventListener('keyup', function (e) {
                 rupiah_jual.value = formatRupiah(this.value, 'Rp. ');
             });
 
@@ -210,13 +215,13 @@ include("header.php");
             });
         </script>
         <script>
-            $(document).ready(function() {
+            $(document).ready(function () {
                 $('.select2').select2({
                     placeholder: "Pilih Kategori",
-                    allowClear: true, 
-                    width: 'resolve', 
+                    allowClear: true,
+                    width: 'resolve',
                     dropdownAutoWidth: true,
-                    theme: "classic", 
+                    theme: "classic",
                 });
 
                 $(document).on('select2:open', () => {
@@ -224,7 +229,7 @@ include("header.php");
                 });
             });
         </script>
-        <?php include("footer.php");
+        <?php include("../template/footer.php");
         ?>
 </body>
 
