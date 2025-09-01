@@ -29,37 +29,33 @@ include("../template/header.php");
                                         <thead>
                                             <tr>
                                                 <th>id</th>
-                                                <th>tanggal</th>
-                                                <th>Nama Pendapatan</th>
-                                                <th>jumlah</th>
-                                                <th>keterangan</th>
-                                                <th>Aksi</th>
+                                                <th>Tahun</th>
+                                                <th>Bulan</th>
+                                                <th>Nominal</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $query = "select * from tbl_pendapatan";
+                                            $query = "select * from tbl_modal_awal";
                                             $result = mysqli_query($koneksi, $query);
                                             if (mysqli_num_rows($result) > 0):
                                                 while ($row = mysqli_fetch_assoc($result)): ?>
                                                     <tr>
-                                                        <td><?= $row['id_pendapatan']; ?></td>
-                                                        <td><?= $row['tanggal']; ?></td>
-                                                        <td><?= $row['nama_pendapatan']; ?></td>
-                                                        <td>Rp <?= number_format($row['jumlah'], 0, ',', '.'); ?></td>
-                                                        <td><?= $row['keterangan']; ?></td>
+                                                        <td><?= $row['id_modal']; ?></td>
+                                                        <td><?= $row['tahun']; ?></td>
+                                                        <td><?= $row['bulan']; ?></td>
+                                                        <td><?= $row['nominal']; ?></td>
                                                         <td>
                                                             <button class="btn btn-primary edit-btn"
-                                                                data-id_pendapatan="<?= $row['id_pendapatan']; ?>"
-                                                                data-tanggal="<?= $row['tanggal']; ?>"
-                                                                data-nama_pendapatan="<?= $row['nama_pendapatan']; ?>"
-                                                                data-jumlah="<?= $row['jumlah']; ?>"
-                                                                data-keterangan="<?= $row['keterangan']; ?>" data-toggle="modal"
+                                                                data-id_modal="<?= $row['id_modal']; ?>"
+                                                                data-tanggal="<?= $row['tahun']; ?>"
+                                                                data-nama_pendapatan="<?= $row['bulan']; ?>"
+                                                                data-nominal="<?= $row['nominal']; ?>"
                                                                 data-target="#editModal">
                                                                 Edit
                                                             </button>
                                                             <button class="btn btn-danger"> <a
-                                                                    href="proses_hapus_pendapatan.php?id_pendapatan=<?= $row['id_pendapatan']; ?>"
+                                                                    href="hapus_modal.php?id_modal=<?= $row['id_modal']; ?>"
                                                                     class="text-white">Hapus</a></button>
                                                         </td>
                                                     </tr>
@@ -77,41 +73,36 @@ include("../template/header.php");
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="editModalLabel">Edit pendapatan</h5>
+                                                    <h5 class="modal-title" id="editModalLabel">Edit Modal</h5>
                                                     <button type="button" class="close" data-dismiss="modal"
                                                         aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
-                                                <form action="proses_edit_pendapatan.php" method="POST"
+                                                <form action="edit_modal.php" method="POST"
                                                     id="formEditBiaya">
                                                     <div class="modal-body">
-                                                        <input type="hidden" name="id_pendapatan"
-                                                            id="edit-id_pendapatan">
+                                                        <input type="hidden" name="id_modal"
+                                                            id="edit-id_modal">
 
                                                         <div class="form-group mb-3">
-                                                            <label for="edit-nama_pendapatan">Nama pendapatan</label>
-                                                            <input type="text" name="nama_pendapatan"
-                                                                id="edit-nama_pendapatan" class="form-control" required>
+                                                            <label for="edit-tahun">Tahun</label>
+                                                            <input type="text" name="tahun"
+                                                                id="edit-tahun" class="form-control" required>
                                                         </div>
 
                                                         <div class="form-group mb-3">
-                                                            <label for="edit-tanggal">Tanggal</label>
-                                                            <input type="date" name="tanggal" id="edit-tanggal"
+                                                            <label for="edit-bulan">Bulan</label>
+                                                            <input type="date" name="bulan" id="edit-bulan"
                                                                 class="form-control" required>
                                                         </div>
 
                                                         <div class="form-group mb-3">
-                                                            <label for="edit-jumlah">Jumlah</label>
-                                                            <input type="text" name="jumlah" id="edit-jumlah"
+                                                            <label for="edit-nominal">Nominal</label>
+                                                            <input type="text" name="nominal" id="edit-nominal"
                                                                 class="form-control" min="1" required>
                                                         </div>
 
-                                                        <div class="form-group mb-3">
-                                                            <label for="edit-keterangan">Keterangan</label>
-                                                            <textarea name="keterangan" id="edit-keterangan"
-                                                                class="form-control" rows="4" required></textarea>
-                                                        </div>
 
                                                     </div>
                                                     <div class="modal-footer">
@@ -150,14 +141,14 @@ include("../template/header.php");
     <?php include("../template/footer.php"); ?>
 
     <script>
-        $('#edit-jumlah').on('keyup', function () {
+        $('#edit-nominal').on('keyup', function () {
             let angka = this.value.replace(/\D/g, "");
             this.value = angka ? "Rp " + new Intl.NumberFormat("id-ID").format(angka) : "";
         });
 
         $('#formEditBiaya').on('submit', function () {
-            let angka = $('#edit-jumlah').val().replace(/\D/g, "");
-            $('#edit-jumlah').val(angka);
+            let angka = $('#edit-nominal').val().replace(/\D/g, "");
+            $('#edit-nominal').val(angka);
         });
 
 
@@ -168,17 +159,15 @@ include("../template/header.php");
 
         $(document).ready(function () {
             $(".edit-btn").click(function () {
-                var id_pendapatan = $(this).data("id_pendapatan");
-                var tanggal = $(this).data("tanggal");
-                var nama_pendapatan = $(this).data("nama_pendapatan");
-                var jumlah = $(this).data("jumlah");
-                var keterangan = $(this).data("keterangan");
+                var id_modal = $(this).data("id_modal");
+                var tahun = $(this).data("tahun");
+                var bulan = $(this).data("bulan");
+                var nominal = $(this).data("nominal");
 
-                $("#edit-id_pendapatan").val(id_pendapatan);
-                $("#edit-tanggal").val(tanggal);
-                $("#edit-nama_pendapatan").val(nama_pendapatan);
-                $("#edit-jumlah").val(formatRupiah(jumlah));
-                $("#edit-keterangan").val(keterangan);
+                $("#edit-id_modal").val(id_modal);
+                $("#edit-tahun").val(tahun);
+                $("#edit-bulan").val(bulan);
+                $("#edit-nominal").val(formatRupiah(nominal));
 
             });
         });

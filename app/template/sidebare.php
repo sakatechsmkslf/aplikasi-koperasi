@@ -74,11 +74,11 @@
       </li>
       <li class="nav-item">
         <a href="../barang/view_index_barang.php" class="nav-link">
-          <i class="nav-icon fas fa-copy"></i>
+          <i class="nav-icon fas fa-money-check"></i>
           <p>
             Biaya
             <i class="fas fa-angle-left right"></i>
-            <span class="badge badge-info right">6</span>
+            <span class="badge badge-info right">2</span>
           </p>
         </a>
         <ul class="nav nav-treeview">
@@ -101,12 +101,12 @@
         </ul>
       </li>
       <li class="nav-item">
-        <a href="view_index_barang.php" class="nav-link">
-          <i class="nav-icon fas fa-copy"></i>
+        <a href="../pendapatan/pendapatan.php" class="nav-link">
+          <i class="nav-icon fas fa-receipt"></i>
           <p>
             Pendapatan
             <i class="fas fa-angle-left right"></i>
-            <span class="badge badge-info right">6</span>
+            <span class="badge badge-info right">2</span>
           </p>
         </a>
         <ul class="nav nav-treeview">
@@ -126,6 +126,52 @@
             </a>
           </li>
 
+        </ul>
+      </li>
+      <li class="nav-item">
+        <a href="../biaya/laporan-laba-rugi.php" class="nav-link">
+          <i class="nav-icon fas fa-book"></i>
+          <p>
+            Laporan Laba Rugi
+
+          </p>
+        </a>
+      </li>
+
+       <li class="nav-item">
+        <a href="../barang/view_index_barang.php" class="nav-link">
+          <i class="nav-icon fas fa-money-check"></i>
+          <p>
+            Modal
+            <i class="fas fa-angle-left right"></i>
+            <span class="badge badge-info right">2</span>
+          </p>
+        </a>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="../perubahan_modal/tambah_modal.php" class="nav-link">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>Tambah Modal</p>
+            </a>
+          </li>
+        </ul>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="../perubahan_modal/modal.php" class="nav-link">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>Tabel Perubahan Modal</p>
+            </a>
+          </li>
+        </ul>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+        <a href="../perubahan_modal/laporan_perubahan_modal.php" class="nav-link">
+          <i class="nav-icon fas fa-book"></i>
+          <p>
+            Laporan Perubahan Modal
+          </p>
+        </a>
+      </li>
         </ul>
       </li>
       <li class="nav-item">
