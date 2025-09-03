@@ -9,11 +9,12 @@ include("../template/header.php");
         <?php include("../template/navbar.php"); ?>
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <a href="../index3.html" class="brand-link">
-                <img src="../dist/img/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3">
+                <img src="../dist/img/logo.png" alt="Logo" class="brand-image img-circle elevation-3">
                 <span class="brand-text font-weight-light">Kasir BC</span>
             </a>
             <?php include "../template/sidebare.php"; ?>
         </aside>
+
         <div class="content-wrapper">
             <section class="content">
                 <div class="container-fluid">
@@ -23,89 +24,96 @@ include("../template/header.php");
                             </div>
                             <div class="card">
                                 <div class="card-header">
-                                    <h3 class="card-title">Table Biaya</h3>
+                                    <h3 class="card-title">Daftar Aset (Neraca)</h3>
                                 </div>
                                 <div class="card-body">
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Tanggal</th>
-                                                <th>Nama Biaya</th>
-                                                <th>Jumlah</th>
-                                                <th>Keterangan</th>
+                                                <th>Nama Aset</th>
+                                                <th>Nilai Perolehan</th>
+                                                <th>Akumulasi Penyusutan</th>
+                                                <th>Tahun Perolehan</th>
+                                                <th>Umur Ekonomis</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $query = "select * from tbl_biaya";
+                                            $query = "SELECT * FROM tbl_neraca";
                                             $result = mysqli_query($koneksi, $query);
                                             if (mysqli_num_rows($result) > 0):
                                                 while ($row = mysqli_fetch_assoc($result)): ?>
                                                     <tr>
-                                                        <td><?= $row['id_biaya']; ?></td>
-                                                        <td><?= $row['tanggal']; ?></td>
-                                                        <td><?= $row['nama_biaya']; ?></td>
-                                                        <td>Rp <?= number_format($row['jumlah'], 0, ',', '.'); ?></td>
-                                                        <td><?= $row['keterangan']; ?></td>
+                                                        <td><?= $row['id_neraca']; ?></td>
+                                                        <td><?= $row['nama_aset']; ?></td>
+                                                        <td>Rp <?= number_format($row['nilai_perolehan'], 0, ',', '.'); ?></td>
+                                                        <td>Rp <?= number_format($row['akumulasi_penyusutan'], 0, ',', '.'); ?></td>
+                                                        <td><?= date('d-m-Y', strtotime($row['tahun_perolehan'])); ?></td>
+                                                        <td><?= $row['umur_ekonomis']; ?> Tahun</td>
                                                         <td>
                                                             <button class="btn btn-primary edit-btn"
-                                                                data-id="<?= $row['id_biaya']; ?>"
-                                                                data-tanggal="<?= $row['tanggal']; ?>"
-                                                                data-nama="<?= $row['nama_biaya']; ?>"
-                                                                data-jumlah="<?= $row['jumlah']; ?>"
-                                                                data-keterangan="<?= $row['keterangan']; ?>" 
+                                                                data-id="<?= $row['id_neraca']; ?>"
+                                                                data-nama="<?= $row['nama_aset']; ?>"
+                                                                data-nilai="<?= $row['nilai_perolehan']; ?>"
+                                                                data-penyusutan="<?= $row['akumulasi_penyusutan']; ?>"
+                                                                data-tahun="<?= $row['tahun_perolehan']; ?>"
+                                                                data-umur="<?= $row['umur_ekonomis']; ?>" 
                                                                 data-toggle="modal"
                                                                 data-target="#editModal">
                                                                 Edit
                                                             </button>
-                                                            <button class="btn btn-danger"><a
-                                                                    href="proses_hapus_biaya.php?id_biaya=<?= $row['id_biaya']; ?>"
-                                                                    class="text-white">Hapus</a></button>
+                                                            <a href="proses_hapus_neraca.php?id=<?= $row['id_neraca']; ?>"
+                                                                class="btn btn-danger text-white">Hapus</a>
                                                         </td>
                                                     </tr>
                                                 <?php endwhile;
                                             else: ?>
                                                 <tr>
-                                                    <td colspan="6">Tidak ada data ditemukan</td>
+                                                    <td colspan="7">Tidak ada data ditemukan</td>
                                                 </tr>
                                             <?php endif; ?>
                                         </tbody>
                                     </table>
-                                    
+
                                     <!-- Modal Edit -->
                                     <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="editModalLabel">Edit Biaya</h5>
+                                                    <h5 class="modal-title" id="editModalLabel">Edit Aset</h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
-                                                <form action="proses_edit_biaya.php" method="POST" id="formEditBiaya">
+                                                <form action="proses_edit_neraca.php" method="POST" id="formEditNeraca">
                                                     <div class="modal-body">
-                                                        <input type="hidden" name="id_biaya" id="edit-id">
+                                                        <input type="hidden" name="id_neraca" id="edit-id">
 
                                                         <div class="form-group mb-3">
-                                                            <label for="edit-nama">Nama Biaya</label>
-                                                            <input type="text" name="nama_biaya" id="edit-nama" class="form-control" required>
+                                                            <label for="edit-nama">Nama Aset</label>
+                                                            <input type="text" name="nama_aset" id="edit-nama" class="form-control" required>
                                                         </div>
 
                                                         <div class="form-group mb-3">
-                                                            <label for="edit-tanggal">Tanggal</label>
-                                                            <input type="date" name="tanggal" id="edit-tanggal" class="form-control" required>
+                                                            <label for="edit-nilai">Nilai Perolehan</label>
+                                                            <input type="text" name="nilai_perolehan" id="edit-nilai" class="form-control" required>
                                                         </div>
 
                                                         <div class="form-group mb-3">
-                                                            <label for="edit-jumlah">Jumlah</label>
-                                                            <input type="text" name="jumlah" id="edit-jumlah" class="form-control" required>
+                                                            <label for="edit-penyusutan">Akumulasi Penyusutan</label>
+                                                            <input type="text" name="akumulasi_penyusutan" id="edit-penyusutan" class="form-control">
                                                         </div>
 
                                                         <div class="form-group mb-3">
-                                                            <label for="edit-keterangan">Keterangan</label>
-                                                            <textarea name="keterangan" id="edit-keterangan" class="form-control" rows="4" required></textarea>
+                                                            <label for="edit-tahun">Tahun Perolehan</label>
+                                                            <input type="date" name="tahun_perolehan" id="edit-tahun" class="form-control" required>
+                                                        </div>
+
+                                                        <div class="form-group mb-3">
+                                                            <label for="edit-umur">Umur Ekonomis (tahun)</label>
+                                                            <input type="number" name="umur_ekonomis" id="edit-umur" class="form-control" required>
                                                         </div>
                                                     </div>
 
@@ -118,19 +126,14 @@ include("../template/header.php");
                                         </div>
                                     </div>
                                 </div>
-                                <!-- /.card-body -->
                             </div>
-                            <!-- /.card -->
                         </div>
-                        <!-- /.col -->
                     </div>
-                    <!-- /.row -->
                 </div>
             </section>
         </div>
     </div>
 
-    <!-- Alert untuk status -->
     <?php if (isset($_SESSION['status'])): ?>
         <script>
             alert("<?= $_SESSION['status']; ?>");
@@ -141,10 +144,9 @@ include("../template/header.php");
         ?>
     <?php endif; ?>
 
-    <!-- Include footer yang benar -->
+    <!-- Include footer -->
     <?php include("../template/footer.php"); ?>
 
-    <!-- JavaScript -->
     <script>
         function formatRupiah(angka) {
             let clean = angka.toString().replace(/\D/g, "");
@@ -154,26 +156,28 @@ include("../template/header.php");
         $(document).ready(function () {
             $(".edit-btn").click(function () {
                 var id = $(this).data("id");
-                var tanggal = $(this).data("tanggal");
                 var nama = $(this).data("nama");
-                var jumlah = $(this).data("jumlah");
-                var keterangan = $(this).data("keterangan");
+                var nilai = $(this).data("nilai");
+                var penyusutan = $(this).data("penyusutan");
+                var tahun = $(this).data("tahun");
+                var umur = $(this).data("umur");
 
                 $("#edit-id").val(id);
-                $("#edit-tanggal").val(tanggal);
                 $("#edit-nama").val(nama);
-                $("#edit-jumlah").val(formatRupiah(jumlah));
-                $("#edit-keterangan").val(keterangan);
+                $("#edit-nilai").val(formatRupiah(nilai));
+                $("#edit-penyusutan").val(formatRupiah(penyusutan));
+                $("#edit-tahun").val(tahun);
+                $("#edit-umur").val(umur);
             });
 
-            $('#edit-jumlah').on('keyup', function () {
-                let angka = this.value.replace(/\D/g, ""); 
+            $('#edit-nilai, #edit-penyusutan').on('keyup', function () {
+                let angka = this.value.replace(/\D/g, "");
                 this.value = angka ? "Rp " + new Intl.NumberFormat("id-ID").format(angka) : "";
             });
 
-            $('#formEditBiaya').on('submit', function () {
-                let angka = $('#edit-jumlah').val().replace(/\D/g, "");
-                $('#edit-jumlah').val(angka);
+            $('#formEditNeraca').on('submit', function () {
+                $('#edit-nilai').val($('#edit-nilai').val().replace(/\D/g, ""));
+                $('#edit-penyusutan').val($('#edit-penyusutan').val().replace(/\D/g, ""));
             });
         });
     </script>

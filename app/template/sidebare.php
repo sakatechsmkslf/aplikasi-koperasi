@@ -138,7 +138,7 @@
         </a>
       </li>
 
-       <li class="nav-item">
+      <li class="nav-item">
         <a href="../barang/view_index_barang.php" class="nav-link">
           <i class="nav-icon fas fa-money-check"></i>
           <p>
@@ -165,15 +165,69 @@
         </ul>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-        <a href="../perubahan_modal/laporan_perubahan_modal.php" class="nav-link">
-          <i class="nav-icon fas fa-book"></i>
-          <p>
-            Laporan Perubahan Modal
-          </p>
-        </a>
-      </li>
+            <a href="../perubahan_modal/laporan_perubahan_modal.php" class="nav-link">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                Laporan Perubahan Modal
+              </p>
+            </a>
+          </li>
         </ul>
       </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">
+          <i class="nav-icon fas fa-balance-scale"></i>
+          <p>
+            Neraca
+            <i class="fas fa-angle-left right"></i>
+            <span class="badge badge-info right">6</span>
+          </p>
+        </a>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="../neraca/tambah_neraca.php" class="nav-link">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>Tambah Hasil Tetap</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="../neraca/index.php" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>Tabel Hasil Tetap</p>
+            </a>
+          </li>
+        </ul>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="../hutang/tambah_hutang.php" class="nav-link">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>Tambah Hutang</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="../hutang/hutang.php" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>Tabel Hutang</p>
+            </a>
+          </li>
+        </ul>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="../simpanan/tambah_simpanan.php" class="nav-link">
+              <i class="nav-icon fas fa-coins"></i>
+              <p>Tambah simpanan</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="../simpanan/simpanan.php" class="nav-link">
+              <i class="nav-icon fas fas fa-coins"></i>
+              <p>Tabel simpanan</p>
+            </a>
+          </li>
+        </ul>
+
+      </li>
+
       <li class="nav-item">
         <a href="../logout.php" class="nav-link">
           <i class="nav-icon fas fa-power-off"></i>

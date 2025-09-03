@@ -26,7 +26,7 @@ include("../template/header.php");
                                     <h3 class="card-title">tambah Biaya</h3>
                                 </div>
                                 <div class="card-body">
-                                    <form method="POST" action="biaya/proses_tambah_biaya.php" id="formku">
+                                    <form method="POST" action="proses_tambah_biaya.php" id="formku">
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Tanggal</label>
                                             <input type="date" name="tanggal" class="form-control"

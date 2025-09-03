@@ -10,7 +10,7 @@ $sql= mysqli_query($koneksi, "select * from user where user_email='$email' and u
 if(mysqli_num_rows($sql)==1){
     $user = mysqli_fetch_assoc($sql);
     $_SESSION['user_email'] = $user['user_email']; 
-   header("location:app");
+   header("location: app/template/index.php");
 }else{
     echo "login gagal";
 }
