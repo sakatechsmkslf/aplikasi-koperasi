@@ -213,15 +213,15 @@
         </ul>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="../celengan/tambah_celengan.php" class="nav-link">
+            <a href="../simpanan/tambah_simpanan.php" class="nav-link">
               <i class="nav-icon fas fa-coins"></i>
-              <p>Tambah Celengan</p>
+              <p>Tambah simpanan</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="../celengan/celengan.php" class="nav-link">
+            <a href="../simpanan/simpanan.php" class="nav-link">
               <i class="nav-icon fas fas fa-coins"></i>
-              <p>Tabel Celengan</p>
+              <p>Tabel simpanan</p>
             </a>
           </li>
         </ul>

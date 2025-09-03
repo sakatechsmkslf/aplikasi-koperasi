@@ -25,32 +25,36 @@ include("../template/header.php");
                                     <h3 class="card-title">Tambah Aset (Neraca)</h3>
                                 </div>
                                 <div class="card-body">
-                                    <form method="POST" action="neraca/proses_tambah_neraca.php" id="formneraca">
+                                    <form method="POST" action="hutang/proses_tambah_hutang.php" id="formHutang">
                                         <div class="form-group">
-                                            <label for="nama_aset">Nama Aset</label>
-                                            <input type="text" name="nama_aset" class="form-control" required autofocus>
+                                            <label for="jenis">Jenis Hutang</label>
+                                            <input type="text" name="jenis" id="jenis" class="form-control" required>
                                         </div>
+
                                         <div class="form-group">
-                                            <label for="nilai_perolehan">Nilai Perolehan</label>
-                                            <input type="text" name="nilai_perolehan" class="form-control" id="nilai_perolehan" required>
+                                            <label for="nominal">Nominal</label>
+                                            <input type="text" name="nominal" id="nominal" class="form-control"
+                                                required>
                                         </div>
+
                                         <div class="form-group">
-                                            <label for="akumulasi_penyusutan">Akumulasi Penyusutan</label>
-                                            <input type="text" name="akumulasi_penyusutan" class="form-control" id="akumulasi_penyusutan">
+                                            <label for="jatuh_tempo">Jatuh Tempo</label>
+                                            <input type="date" name="jatuh_tempo" id="jatuh_tempo" class="form-control"
+                                                required>
                                         </div>
+
                                         <div class="form-group">
-                                            <label for="tahun_perolehan">Tahun Perolehan</label>
-                                            <input type="date" name="tahun_perolehan" class="form-control" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="umur_ekonomis">Umur Ekonomis (tahun)</label>
-                                            <input type="number" name="umur_ekonomis" class="form-control" required>
+                                            <label for="status">Status</label>
+                                            <select name="status" id="status" class="form-control" required>
+                                                <option value="belum lunas" selected>Belum Lunas</option>
+                                                <option value="lunas">Lunas</option>
+                                            </select>
                                         </div>
                                     </form>
                                 </div>
                                 <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary" form="formneraca">Simpan</button>
-                                    <a href="index.php" class="btn btn-danger">Batal</a>
+                                    <button type="submit" class="btn btn-primary" form="formHutang">Simpan</button>
+                                    <!-- <a href="index.php" class="btn btn-danger">Batal</a> -->
                                 </div>
                             </div>
 
@@ -62,25 +66,25 @@ include("../template/header.php");
     </div>
 
     <script>
-        // format angka ke rupiah
         function formatRupiah(input) {
             let angka = input.value.replace(/\D/g, "");
             input.value = angka ? "Rp " + new Intl.NumberFormat("id-ID").format(angka) : "";
         }
 
-        const nilai = document.getElementById('nilai_perolehan');
-        const penyusutan = document.getElementById('akumulasi_penyusutan');
-        const form = document.getElementById('formneraca');
+        const nominal = document.getElementById('nominal');
+        const form = document.getElementById('formHutang');
 
-        nilai.addEventListener('keyup', function () { formatRupiah(this); });
-        penyusutan.addEventListener('keyup', function () { formatRupiah(this); });
+        nominal.addEventListener('keyup', function () {
+            formatRupiah(this);
+        });
 
         form.addEventListener('submit', function () {
-            nilai.value = nilai.value.replace(/\D/g, "");
-            penyusutan.value = penyusutan.value.replace(/\D/g, "");
+            // biar ke database masuk angka polos
+            nominal.value = nominal.value.replace(/\D/g, "");
         });
     </script>
 
     <?php include("../template/footer.php"); ?>
 </body>
+
 </html>
