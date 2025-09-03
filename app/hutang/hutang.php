@@ -20,10 +20,11 @@ include("../template/header.php");
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
-
+                            <div class="card">
+                            </div>
                             <div class="card">
                                 <div class="card-header">
-                                    <h3 class="card-title">Daftar Aset (Neraca)</h3>
+                                    <h3 class="card-title">Table Hutang</h3>
                                 </div>
                                 <div class="card-body">
                                     <table id="example1" class="table table-bordered table-striped">
@@ -60,9 +61,10 @@ include("../template/header.php");
                                                                 data-id="<?= $row['id_hutang']; ?>"
                                                                 data-jenis="<?= $row['jenis']; ?>"
                                                                 data-nominal="<?= $row['nominal']; ?>"
-                                                                data-jatuh_tempo="<?= $row['jatuh_tempo']; ?>"
-                                                                data-status="<?= $row['status']; ?>" data-toggle="modal"
-                                                                data-target="#editHutangModal">
+                                                                data-tempo="<?= $row['jatuh_tempo']; ?>"
+                                                                data-status="<?= $row['status']; ?>" 
+                                                                data-toggle="modal"
+                                                                data-target="#editModal">
                                                                 Edit
                                                             </button>
                                                             <a href="proses_hapus_hutang.php?id=<?= $row['id_hutang']; ?>"
@@ -79,41 +81,37 @@ include("../template/header.php");
                                     </table>
 
                                     <!-- Modal Edit -->
-                                    <div class="modal fade" id="editHutangModal" tabindex="-1" aria-hidden="true">
+                                    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title">Edit Hutang</h5>
-                                                    <button type="button" class="close" data-dismiss="modal">
-                                                        <span>&times;</span>
+                                                    <h5 class="modal-title" id="editModalLabel">Edit Hutang</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
                                                 <form action="proses_edit_hutang.php" method="POST" id="formEditHutang">
                                                     <div class="modal-body">
-                                                        <input type="hidden" name="id_hutang" id="edit-id-hutang">
+                                                        <input type="hidden" name="id_hutang" id="edit-id">
 
                                                         <div class="form-group mb-3">
                                                             <label for="edit-jenis">Jenis Hutang</label>
-                                                            <input type="text" name="jenis" id="edit-jenis"
-                                                                class="form-control" required>
+                                                            <input type="text" name="jenis" id="edit-jenis" class="form-control" required>
                                                         </div>
 
                                                         <div class="form-group mb-3">
                                                             <label for="edit-nominal">Nominal</label>
-                                                            <input type="text" name="nominal" id="edit-nominal"
-                                                                class="form-control" required>
+                                                            <input type="text" name="nominal" id="edit-nominal" class="form-control" required>
                                                         </div>
 
                                                         <div class="form-group mb-3">
-                                                            <label for="edit-jatuh_tempo">Jatuh Tempo</label>
-                                                            <input type="date" name="jatuh_tempo" id="edit-jatuh_tempo"
-                                                                class="form-control" required>
+                                                            <label for="edit-tempo">Jatuh Tempo</label>
+                                                            <input type="date" name="jatuh_tempo" id="edit-tempo" class="form-control" required>
                                                         </div>
 
                                                         <div class="form-group mb-3">
                                                             <label for="edit-status">Status</label>
-                                                            <select name="status" id="edit-status" class="form-control"
-                                                                required>
+                                                            <select name="status" id="edit-status" class="form-control" required>
                                                                 <option value="belum lunas">Belum Lunas</option>
                                                                 <option value="lunas">Lunas</option>
                                                             </select>
@@ -121,56 +119,77 @@ include("../template/header.php");
                                                     </div>
 
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-dismiss="modal">Tutup</button>
-                                                        <button type="submit" class="btn btn-primary">Simpan
-                                                            Perubahan</button>
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                                        <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                                                     </div>
                                                 </form>
                                             </div>
                                         </div>
                                     </div>
-
                                     <!-- End Modal -->
-
                                 </div>
+                                <!-- /.card-body -->
                             </div>
-
+                            <!-- /.card -->
                         </div>
+                        <!-- /.col -->
                     </div>
+                    <!-- /.row -->
                 </div>
             </section>
         </div>
     </div>
 
+    <!-- Alert untuk status -->
+    <?php if (isset($_SESSION['status'])): ?>
+        <script>
+            alert("<?= $_SESSION['status']; ?>");
+        </script>
+        <?php
+        unset($_SESSION['status']);
+        unset($_SESSION['status_type']);
+        ?>
+    <?php endif; ?>
+
+    <!-- Include footer -->
+    <?php include("../template/footer.php"); ?>
+
+    <!-- JavaScript -->
     <script>
+        // Fungsi untuk format rupiah
         function formatRupiah(angka) {
             let clean = angka.toString().replace(/\D/g, "");
             return clean ? "Rp " + new Intl.NumberFormat("id-ID").format(clean) : "";
         }
 
         $(document).ready(function () {
+            // Handler untuk tombol edit
             $(".edit-btn").click(function () {
-                $("#edit-id-hutang").val($(this).data("id"));
-                $("#edit-jenis").val($(this).data("jenis"));
-                $("#edit-nominal").val(formatRupiah($(this).data("nominal")));
-                $("#edit-jatuh_tempo").val($(this).data("jatuh_tempo"));
-                $("#edit-status").val($(this).data("status"));
+                var id = $(this).data("id");
+                var jenis = $(this).data("jenis");
+                var nominal = $(this).data("nominal");
+                var tempo = $(this).data("tempo");
+                var status = $(this).data("status");
+
+                // Isi data ke form modal
+                $("#edit-id").val(id);
+                $("#edit-jenis").val(jenis);
+                $("#edit-nominal").val(formatRupiah(nominal));
+                $("#edit-tempo").val(tempo);
+                $("#edit-status").val(status);
             });
 
+            // Format rupiah saat mengetik
             $('#edit-nominal').on('keyup', function () {
                 let angka = this.value.replace(/\D/g, "");
                 this.value = angka ? "Rp " + new Intl.NumberFormat("id-ID").format(angka) : "";
             });
 
+            // Hilangkan format sebelum submit
             $('#formEditHutang').on('submit', function () {
                 $('#edit-nominal').val($('#edit-nominal').val().replace(/\D/g, ""));
             });
         });
     </script>
-
-
-    <?php include("../template/footer.php"); ?>
 </body>
-
 </html>

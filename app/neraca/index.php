@@ -20,7 +20,8 @@ include("../template/header.php");
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
-
+                            <div class="card">
+                            </div>
                             <div class="card">
                                 <div class="card-header">
                                     <h3 class="card-title">Daftar Aset (Neraca)</h3>
@@ -54,11 +55,11 @@ include("../template/header.php");
                                                         <td>
                                                             <button class="btn btn-primary edit-btn"
                                                                 data-id="<?= $row['id_neraca']; ?>"
-                                                                data-nama_aset="<?= $row['nama_aset']; ?>"
+                                                                data-nama="<?= $row['nama_aset']; ?>"
                                                                 data-nilai="<?= $row['nilai_perolehan']; ?>"
                                                                 data-penyusutan="<?= $row['akumulasi_penyusutan']; ?>"
                                                                 data-tahun="<?= $row['tahun_perolehan']; ?>"
-                                                                data-umur="<?= $row['umur_ekonomis']; ?>"
+                                                                data-umur="<?= $row['umur_ekonomis']; ?>" 
                                                                 data-toggle="modal"
                                                                 data-target="#editModal">
                                                                 Edit
@@ -77,13 +78,13 @@ include("../template/header.php");
                                     </table>
 
                                     <!-- Modal Edit -->
-                                    <div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
+                                    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title">Edit Aset</h5>
-                                                    <button type="button" class="close" data-dismiss="modal">
-                                                        <span>&times;</span>
+                                                    <h5 class="modal-title" id="editModalLabel">Edit Aset</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
                                                 <form action="proses_edit_neraca.php" method="POST" id="formEditNeraca">
@@ -91,8 +92,8 @@ include("../template/header.php");
                                                         <input type="hidden" name="id_neraca" id="edit-id">
 
                                                         <div class="form-group mb-3">
-                                                            <label for="edit-nama_aset">Nama Aset</label>
-                                                            <input type="text" name="nama_aset" id="edit-nama_aset" class="form-control" required>
+                                                            <label for="edit-nama">Nama Aset</label>
+                                                            <input type="text" name="nama_aset" id="edit-nama" class="form-control" required>
                                                         </div>
 
                                                         <div class="form-group mb-3">
@@ -124,17 +125,27 @@ include("../template/header.php");
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- End Modal -->
-
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
             </section>
         </div>
     </div>
+
+    <?php if (isset($_SESSION['status'])): ?>
+        <script>
+            alert("<?= $_SESSION['status']; ?>");
+        </script>
+        <?php
+        unset($_SESSION['status']);
+        unset($_SESSION['status_type']);
+        ?>
+    <?php endif; ?>
+
+    <!-- Include footer -->
+    <?php include("../template/footer.php"); ?>
 
     <script>
         function formatRupiah(angka) {
@@ -144,12 +155,19 @@ include("../template/header.php");
 
         $(document).ready(function () {
             $(".edit-btn").click(function () {
-                $("#edit-id").val($(this).data("id"));
-                $("#edit-nama_aset").val($(this).data("nama_aset"));
-                $("#edit-nilai").val(formatRupiah($(this).data("nilai")));
-                $("#edit-penyusutan").val(formatRupiah($(this).data("penyusutan")));
-                $("#edit-tahun").val($(this).data("tahun"));
-                $("#edit-umur").val($(this).data("umur"));
+                var id = $(this).data("id");
+                var nama = $(this).data("nama");
+                var nilai = $(this).data("nilai");
+                var penyusutan = $(this).data("penyusutan");
+                var tahun = $(this).data("tahun");
+                var umur = $(this).data("umur");
+
+                $("#edit-id").val(id);
+                $("#edit-nama").val(nama);
+                $("#edit-nilai").val(formatRupiah(nilai));
+                $("#edit-penyusutan").val(formatRupiah(penyusutan));
+                $("#edit-tahun").val(tahun);
+                $("#edit-umur").val(umur);
             });
 
             $('#edit-nilai, #edit-penyusutan').on('keyup', function () {
@@ -163,7 +181,5 @@ include("../template/header.php");
             });
         });
     </script>
-
-    <?php include("../template/footer.php"); ?>
 </body>
 </html>

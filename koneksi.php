@@ -1,5 +1,5 @@
 <?php
-$koneksi=mysqli_connect("localhost","root","","koperasi");
+$koneksi=mysqli_connect("localhost","root","","kasir");
 
 
 ?>

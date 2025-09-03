@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 26, 2025 at 09:38 AM
+-- Generation Time: Sep 03, 2025 at 10:31 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -47,7 +47,8 @@ INSERT INTO `category` (`id_category`, `nama`) VALUES
 (10, '0'),
 (11, 'Makanan Rin'),
 (12, 'Makanan Rin'),
-(13, 'Makanan Rin');
+(13, 'Makanan Rin'),
+(14, 'katekgorek');
 
 -- --------------------------------------------------------
 
@@ -110,7 +111,7 @@ INSERT INTO `tbl_barang` (`id_tbl_barang`, `input_scanner`, `nama_barang`, `id_c
 (42, '8995077605314', 'Usagi', 12, 900, 1000, 17, '2025-07-26 06:25:58'),
 (43, '8993172000522', 'Choco Chips', 13, 1800, 2000, 2, '2025-07-26 06:43:56'),
 (44, '8992775110171', 'Kacang Kulit Garuda', 12, 900, 1000, 11, '2025-07-26 06:47:40'),
-(45, '8992779073304', 'Stella', 7, 10000, 11000, 18, '2025-08-14 06:09:09');
+(46, '2', 'emansipasi', 2, 1, 4, 2, '2025-08-27 10:54:44');
 
 -- --------------------------------------------------------
 
@@ -129,6 +130,35 @@ CREATE TABLE `tbl_biaya` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_hutang`
+--
+
+CREATE TABLE `tbl_hutang` (
+  `id_hutang` int(11) NOT NULL,
+  `jenis` varchar(255) NOT NULL,
+  `nominal` decimal(20,0) NOT NULL,
+  `jatuh_tempo` date NOT NULL,
+  `status` enum('belum lunas','lunas') NOT NULL DEFAULT 'belum lunas'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_neraca`
+--
+
+CREATE TABLE `tbl_neraca` (
+  `id_neraca` int(11) NOT NULL,
+  `nama_aset` varchar(255) NOT NULL,
+  `nilai_perolehan` decimal(20,0) NOT NULL,
+  `akumulasi_penyusutan` decimal(20,0) NOT NULL,
+  `tahun_perolehan` date NOT NULL,
+  `umur_ekonomis` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_pendapatan`
 --
 
@@ -138,6 +168,20 @@ CREATE TABLE `tbl_pendapatan` (
   `nama_pendapatan` varchar(255) NOT NULL,
   `jumlah` int(11) NOT NULL,
   `keterangan` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_simpanan`
+--
+
+CREATE TABLE `tbl_simpanan` (
+  `id_simpanan` int(11) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `jenis_simpanan` enum('pokok','wajib','sukarela','deposito') NOT NULL,
+  `nominal` decimal(20,0) NOT NULL,
+  `tanggal` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -220,10 +264,28 @@ ALTER TABLE `tbl_biaya`
   ADD PRIMARY KEY (`id_biaya`);
 
 --
+-- Indexes for table `tbl_hutang`
+--
+ALTER TABLE `tbl_hutang`
+  ADD PRIMARY KEY (`id_hutang`);
+
+--
+-- Indexes for table `tbl_neraca`
+--
+ALTER TABLE `tbl_neraca`
+  ADD PRIMARY KEY (`id_neraca`);
+
+--
 -- Indexes for table `tbl_pendapatan`
 --
 ALTER TABLE `tbl_pendapatan`
   ADD PRIMARY KEY (`id_pendapatan`);
+
+--
+-- Indexes for table `tbl_simpanan`
+--
+ALTER TABLE `tbl_simpanan`
+  ADD PRIMARY KEY (`id_simpanan`);
 
 --
 -- Indexes for table `tbl_transaksi`
@@ -245,7 +307,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id_category` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_category` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `detail_transaksi`
@@ -257,7 +319,7 @@ ALTER TABLE `detail_transaksi`
 -- AUTO_INCREMENT for table `tbl_barang`
 --
 ALTER TABLE `tbl_barang`
-  MODIFY `id_tbl_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id_tbl_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `tbl_biaya`
@@ -266,10 +328,28 @@ ALTER TABLE `tbl_biaya`
   MODIFY `id_biaya` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `tbl_hutang`
+--
+ALTER TABLE `tbl_hutang`
+  MODIFY `id_hutang` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_neraca`
+--
+ALTER TABLE `tbl_neraca`
+  MODIFY `id_neraca` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `tbl_pendapatan`
 --
 ALTER TABLE `tbl_pendapatan`
   MODIFY `id_pendapatan` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_simpanan`
+--
+ALTER TABLE `tbl_simpanan`
+  MODIFY `id_simpanan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_transaksi`

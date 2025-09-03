@@ -22,17 +22,18 @@ include("../template/header.php");
                             <div class="card">
                             </div>
                             <div class="card">
-
-                                </form>
+                                <div class="card-header">
+                                    <h3 class="card-title">Table Biaya</h3>
+                                </div>
                                 <div class="card-body">
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th>id</th>
-                                                <th>tanggal</th>
+                                                <th>ID</th>
+                                                <th>Tanggal</th>
                                                 <th>Nama Biaya</th>
-                                                <th>jumlah</th>
-                                                <th>keterangan</th>
+                                                <th>Jumlah</th>
+                                                <th>Keterangan</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
@@ -50,11 +51,12 @@ include("../template/header.php");
                                                         <td><?= $row['keterangan']; ?></td>
                                                         <td>
                                                             <button class="btn btn-primary edit-btn"
-                                                                data-id_biaya="<?= $row['id_biaya']; ?>"
+                                                                data-id="<?= $row['id_biaya']; ?>"
                                                                 data-tanggal="<?= $row['tanggal']; ?>"
-                                                                data-nama_biaya="<?= $row['nama_biaya']; ?>"
+                                                                data-nama="<?= $row['nama_biaya']; ?>"
                                                                 data-jumlah="<?= $row['jumlah']; ?>"
-                                                                data-keterangan="<?= $row['keterangan']; ?>" data-toggle="modal"
+                                                                data-keterangan="<?= $row['keterangan']; ?>" 
+                                                                data-toggle="modal"
                                                                 data-target="#editModal">
                                                                 Edit
                                                             </button>
@@ -69,58 +71,49 @@ include("../template/header.php");
                                                     <td colspan="6">Tidak ada data ditemukan</td>
                                                 </tr>
                                             <?php endif; ?>
-
-                                            </tfoot>
+                                        </tbody>
                                     </table>
-                                    <div class="modal fade" id="editModal" tabindex="-1"
-                                        aria-labelledby="editModalLabel" aria-hidden="true">
+                                    
+                                    <!-- Modal Edit -->
+                                    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="editModalLabel">Edit Biayaa</h5>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
+                                                    <h5 class="modal-title" id="editModalLabel">Edit Biaya</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
-                                                <form action="proses_edit_biaya.php" method="POST"
-                                                    id="formEditBiaya">
+                                                <form action="proses_edit_biaya.php" method="POST" id="formEditBiaya">
                                                     <div class="modal-body">
-                                                        <input type="hidden" name="id_biaya" id="edit-id_biaya">
+                                                        <input type="hidden" name="id_biaya" id="edit-id">
 
                                                         <div class="form-group mb-3">
-                                                            <label for="edit-nama_biaya">Nama Biaya</label>
-                                                            <input type="text" name="nama_biaya" id="edit-nama_biaya"
-                                                                class="form-control" required>
+                                                            <label for="edit-nama">Nama Biaya</label>
+                                                            <input type="text" name="nama_biaya" id="edit-nama" class="form-control" required>
                                                         </div>
 
                                                         <div class="form-group mb-3">
                                                             <label for="edit-tanggal">Tanggal</label>
-                                                            <input type="date" name="tanggal" id="edit-tanggal"
-                                                                class="form-control" required>
+                                                            <input type="date" name="tanggal" id="edit-tanggal" class="form-control" required>
                                                         </div>
 
                                                         <div class="form-group mb-3">
                                                             <label for="edit-jumlah">Jumlah</label>
-                                                            <input type="text" name="jumlah" id="edit-jumlah"
-                                                                class="form-control" required>
+                                                            <input type="text" name="jumlah" id="edit-jumlah" class="form-control" required>
                                                         </div>
 
                                                         <div class="form-group mb-3">
                                                             <label for="edit-keterangan">Keterangan</label>
-                                                            <textarea name="keterangan" id="edit-keterangan"
-                                                                class="form-control" rows="4" required></textarea>
+                                                            <textarea name="keterangan" id="edit-keterangan" class="form-control" rows="4" required></textarea>
                                                         </div>
                                                     </div>
 
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-dismiss="modal">Tutup</button>
-                                                        <button type="submit" class="btn btn-primary">Simpan
-                                                            Perubahan</button>
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                                        <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                                                     </div>
                                                 </form>
-
                                             </div>
                                         </div>
                                     </div>
@@ -135,8 +128,9 @@ include("../template/header.php");
                 </div>
             </section>
         </div>
-
     </div>
+
+    <!-- Alert untuk status -->
     <?php if (isset($_SESSION['status'])): ?>
         <script>
             alert("<?= $_SESSION['status']; ?>");
@@ -147,21 +141,10 @@ include("../template/header.php");
         ?>
     <?php endif; ?>
 
-    <script>
-        $('#edit-jumlah').on('keyup', function () {
-            let angka = this.value.replace(/\D/g, ""); 
-            this.value = angka ? "Rp " + new Intl.NumberFormat("id-ID").format(angka) : "";
-        });
+    <!-- Include footer yang benar -->
+    <?php include("../template/footer.php"); ?>
 
-        $('#formEditBiaya').on('submit', function () {
-            let angka = $('#edit-jumlah').val().replace(/\D/g, "");
-            $('#edit-jumlah').val(angka);
-        });
-
-    </script>
-
-    <?php include("../footer.php");
-    ?>
+    <!-- JavaScript -->
     <script>
         function formatRupiah(angka) {
             let clean = angka.toString().replace(/\D/g, "");
@@ -170,21 +153,29 @@ include("../template/header.php");
 
         $(document).ready(function () {
             $(".edit-btn").click(function () {
-                var id_biaya = $(this).data("id_biaya");
+                var id = $(this).data("id");
                 var tanggal = $(this).data("tanggal");
-                var nama_biaya = $(this).data("nama_biaya");
+                var nama = $(this).data("nama");
                 var jumlah = $(this).data("jumlah");
                 var keterangan = $(this).data("keterangan");
 
-                $("#edit-id_biaya").val(id_biaya);
+                $("#edit-id").val(id);
                 $("#edit-tanggal").val(tanggal);
-                $("#edit-nama_biaya").val(nama_biaya);
+                $("#edit-nama").val(nama);
                 $("#edit-jumlah").val(formatRupiah(jumlah));
                 $("#edit-keterangan").val(keterangan);
+            });
 
+            $('#edit-jumlah').on('keyup', function () {
+                let angka = this.value.replace(/\D/g, ""); 
+                this.value = angka ? "Rp " + new Intl.NumberFormat("id-ID").format(angka) : "";
+            });
+
+            $('#formEditBiaya').on('submit', function () {
+                let angka = $('#edit-jumlah').val().replace(/\D/g, "");
+                $('#edit-jumlah').val(angka);
             });
         });
     </script>
 </body>
-
 </html>

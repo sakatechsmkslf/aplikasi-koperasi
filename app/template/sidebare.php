@@ -191,7 +191,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="../neraca/neraca.php" class="nav-link">
+            <a href="../neraca/index.php" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
               <p>Tabel Hasil Tetap</p>
             </a>
