@@ -25,7 +25,7 @@ include("../template/header.php");
                                     <h3 class="card-title">Tambah Aset (Neraca)</h3>
                                 </div>
                                 <div class="card-body">
-                                    <form method="POST" action="neraca/proses_tambah_neraca.php" id="formneraca">
+                                    <form method="POST" action="proses_tambah_neraca.php" id="formneraca">
                                         <div class="form-group">
                                             <label for="nama_aset">Nama Aset</label>
                                             <input type="text" name="nama_aset" class="form-control" required autofocus>

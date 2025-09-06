@@ -25,7 +25,7 @@ include("../template/header.php");
                                     <h3 class="card-title">Tambah Aset (Neraca)</h3>
                                 </div>
                                 <div class="card-body">
-                                    <form method="POST" action="hutang/proses_tambah_hutang.php" id="formHutang">
+                                    <form method="POST" action="proses_tambah_hutang.php" id="formHutang">
                                         <div class="form-group">
                                             <label for="jenis">Jenis Hutang</label>
                                             <input type="text" name="jenis" id="jenis" class="form-control" required>

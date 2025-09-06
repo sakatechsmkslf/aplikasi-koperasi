@@ -14,10 +14,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result) {
         session_start();
         $_SESSION['status'] = "Data berhasil diupdate!";
-        header("Location: ../hutang.php");
+        header("Location: hutang.php");
     } else {
         session_start();
         $_SESSION['status'] = "Gagal update";
-        header("Location: ../hutang.php");
+        header("Location: hutang.php");
     }
 }

@@ -64,8 +64,7 @@ include("../template/header.php");
                                                                 data-target="#editModal">
                                                                 Edit
                                                             </button>
-                                                            <a href="proses_hapus_neraca.php?id=<?= $row['id_neraca']; ?>"
-                                                                class="btn btn-danger text-white">Hapus</a>
+                                                            <a href="proses_hapus_neraca.php?id_neraca=<?= $row['id_neraca']; ?>" class="btn btn-danger text-white">Hapus</a>
                                                         </td>
                                                     </tr>
                                                 <?php endwhile;
