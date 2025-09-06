@@ -61,7 +61,7 @@ include("../template/header.php");
                                                                 data-target="#editModal">
                                                                 Edit
                                                             </button>
-                                                            <a href="proses_hapus_simpanan.php?id=<?= $row['id_simpanan']; ?>"
+                                                            <a href="proses_hapus_simpanan.php?id_simpanan=<?= $row['id_simpanan']; ?>"
                                                                 class="btn btn-danger text-white">Hapus</a>
                                                         </td>
                                                     </tr>
@@ -123,13 +123,9 @@ include("../template/header.php");
                                         </div>
                                     </div>
                                 </div>
-                                <!-- /.card-body -->
                             </div>
-                            <!-- /.card -->
                         </div>
-                        <!-- /.col -->
                     </div>
-                    <!-- /.row -->
                 </div>
             </section>
         </div>
@@ -151,14 +147,12 @@ include("../template/header.php");
 
     <!-- JavaScript -->
     <script>
-        // Fungsi untuk format rupiah
         function formatRupiah(angka) {
             let clean = angka.toString().replace(/\D/g, "");
             return clean ? "Rp " + new Intl.NumberFormat("id-ID").format(clean) : "";
         }
 
         $(document).ready(function () {
-            // Handler untuk tombol edit
             $(".edit-btn").click(function () {
                 var id = $(this).data("id");
                 var nama = $(this).data("nama");
@@ -166,7 +160,6 @@ include("../template/header.php");
                 var nominal = $(this).data("nominal");
                 var tanggal = $(this).data("tanggal");
 
-                // Isi data ke form modal
                 $("#edit-id").val(id);
                 $("#edit-nama").val(nama);
                 $("#edit-jenis").val(jenis);
@@ -174,13 +167,11 @@ include("../template/header.php");
                 $("#edit-tanggal").val(tanggal);
             });
 
-            // Format rupiah saat mengetik
             $('#edit-nominal').on('keyup', function () {
                 let angka = this.value.replace(/\D/g, "");
                 this.value = angka ? "Rp " + new Intl.NumberFormat("id-ID").format(angka) : "";
             });
 
-            // Hilangkan format sebelum submit
             $('#formEditSimpanan').on('submit', function () {
                 $('#edit-nominal').val($('#edit-nominal').val().replace(/\D/g, ""));
             });

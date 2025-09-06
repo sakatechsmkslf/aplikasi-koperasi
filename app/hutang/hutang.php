@@ -67,7 +67,7 @@ include("../template/header.php");
                                                                 data-target="#editModal">
                                                                 Edit
                                                             </button>
-                                                            <a href="proses_hapus_hutang.php?id=<?= $row['id_hutang']; ?>"
+                                                            <a href="proses_hapus_hutang.php?id_hutang=<?= $row['id_hutang']; ?>"
                                                                 class="btn btn-danger text-white">Hapus</a>
                                                         </td>
                                                     </tr>

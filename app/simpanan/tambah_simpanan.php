@@ -25,7 +25,7 @@ include("../template/header.php");
                                     <h3 class="card-title">Tambah Simpanan</h3>
                                 </div>
                                 <div class="card-body">
-                                    <form method="POST" action="simpanan/tambah_simpanan.php" id="formSimpanan">
+                                    <form method="POST" action="proses_tambah_simpanan.php" id="formSimpanan">
                                         <div class="form-group">
                                             <label for="nama">Nama</label>
                                             <input type="text" name="nama" class="form-control" required autofocus>
@@ -53,13 +53,12 @@ include("../template/header.php");
                                             <input type="date" name="tanggal" class="form-control" required>
                                         </div>
 
-                                        <button type="submit" class="btn btn-primary">Simpan</button>
+                                        <div class="card-footer">
+                                            <button type="submit" class="btn btn-primary" form="formSimpanan">Simpan</button>
+                                            <a href="simpanan.php" class="btn btn-danger">Batal</a>
+                                        </div>
                                     </form>
 
-                                </div>
-                                <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary" form="formneraca">Simpan</button>
-                                    <a href="index.php" class="btn btn-danger">Batal</a>
                                 </div>
                             </div>
 

@@ -2,6 +2,7 @@
 include '../../koneksi.php';
 session_start();
 
+
 if (isset($_GET['id_neraca'])) {
     $id_neraca = intval($_GET['id_neraca']);
 
@@ -10,13 +11,13 @@ if (isset($_GET['id_neraca'])) {
         $_SESSION['status'] = 'Barang berhasil dihapus!';
         $_SESSION['status_type'] = 'success';
         //ubah ke view index neraca/tambah neraca
-        header('Location: ../neraca.php');
+        header('Location: index.php');
         exit();
     } else {
         $_SESSION['status'] = 'Terjadi kesalahan saat menghapus barang!';
         $_SESSION['status_type'] = 'error';
         //ubah ke view index neraca/tambah neraca
-        header('Location: ../neraca.php');
+        header('Location: index.php');
         exit();
     }
 } else {
